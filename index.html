@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz - Carta aos Gálatas</title>
+    <title>Quiz OAB - Direito Constitucional</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -23,7 +23,7 @@
 
         .container {
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
         }
 
         /* Tela Inicial */
@@ -36,9 +36,18 @@
             animation: slideIn 0.5s ease-out;
         }
 
+        .header-title {
+            color: #1a2a6c;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
         .start-screen h1 {
-            color: #667eea;
-            font-size: 2.5em;
+            color: #b21f1f;
+            font-size: 2.2em;
             margin-bottom: 20px;
         }
 
@@ -50,7 +59,7 @@
         }
 
         .start-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 100%);
             color: white;
             border: none;
             padding: 18px 50px;
@@ -58,24 +67,13 @@
             border-radius: 50px;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 30px rgba(26, 42, 108, 0.4);
+            font-weight: bold;
         }
 
         .start-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
-        }
-
-        .start-button:active {
-            transform: translateY(0);
-        }
-
-        .header-title {
-            color: #667eea;
-            font-size: 1.3em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
+            box-shadow: 0 15px 40px rgba(26, 42, 108, 0.6);
         }
 
         .footer-credit {
@@ -94,7 +92,7 @@
         .quiz-card {
             background: white;
             border-radius: 20px;
-            padding: 40px;
+            padding: 30px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             animation: slideIn 0.5s ease-out;
         }
@@ -104,12 +102,12 @@
             background: #e0e0e0;
             height: 8px;
             border-radius: 10px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             overflow: hidden;
         }
 
         .progress-fill {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(90deg, #1a2a6c 0%, #b21f1f 100%);
             height: 100%;
             border-radius: 10px;
             transition: width 0.3s ease;
@@ -122,47 +120,40 @@
             text-align: right;
         }
 
-        .score-text {
-            color: #667eea;
-            font-weight: bold;
-            margin-bottom: 20px;
-            font-size: 1.1em;
-        }
-
         /* Pergunta */
         .question-text {
             color: #333;
-            font-size: 1.4em;
-            margin-bottom: 30px;
-            line-height: 1.6;
+            font-size: 1.2em;
+            margin-bottom: 25px;
+            line-height: 1.5;
             font-weight: 600;
+            text-align: justify;
         }
 
         /* Opções */
         .options-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 12px;
+            margin-bottom: 25px;
         }
 
         .option {
-            background: #f5f5f5;
-            border: 2px solid #e0e0e0;
-            padding: 18px 20px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            padding: 15px 20px;
             border-radius: 12px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.05em;
+            transition: all 0.2s ease;
+            font-size: 1em;
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
         .option:hover:not(.disabled) {
-            background: #f0f0f0;
-            border-color: #667eea;
-            transform: translateX(5px);
+            background: #f1f3f5;
+            border-color: #1a2a6c;
         }
 
         .option.selected {
@@ -171,58 +162,56 @@
         }
 
         .option.correct {
-            background: #c8e6c9;
-            border-color: #4caf50;
-            color: #2e7d32;
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
         }
 
         .option.incorrect {
-            background: #ffcdd2;
-            border-color: #f44336;
-            color: #c62828;
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
         }
 
         .option.disabled {
             cursor: not-allowed;
-            opacity: 0.7;
+            opacity: 0.8;
         }
 
         .option-letter {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             background: white;
             border-radius: 50%;
             font-weight: bold;
-            color: #667eea;
+            color: #1a2a6c;
             flex-shrink: 0;
+            border: 1px solid #dee2e6;
         }
 
         .option.correct .option-letter {
-            background: #4caf50;
+            background: #28a745;
             color: white;
+            border-color: #28a745;
         }
 
         .option.incorrect .option-letter {
-            background: #f44336;
+            background: #dc3545;
             color: white;
-        }
-
-        .option-text {
-            flex: 1;
+            border-color: #dc3545;
         }
 
         /* Feedback */
         .feedback {
             display: none;
-            padding: 15px 20px;
+            padding: 15px;
             border-radius: 12px;
             margin-bottom: 20px;
-            font-weight: 600;
-            font-size: 1.05em;
-            text-align: center;
+            font-size: 0.95em;
+            line-height: 1.4;
             animation: slideIn 0.3s ease-out;
         }
 
@@ -231,28 +220,27 @@
         }
 
         .feedback.correct {
-            background: #c8e6c9;
-            color: #2e7d32;
-            border-left: 4px solid #4caf50;
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid #28a745;
         }
 
         .feedback.incorrect {
-            background: #ffcdd2;
-            color: #c62828;
-            border-left: 4px solid #f44336;
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid #dc3545;
         }
 
         /* Botões */
         .buttons-container {
             display: flex;
             gap: 15px;
-            margin-top: 30px;
         }
 
         .btn {
             flex: 1;
-            padding: 16px 20px;
-            font-size: 1.05em;
+            padding: 15px;
+            font-size: 1em;
             border: none;
             border-radius: 12px;
             cursor: pointer;
@@ -261,36 +249,23 @@
         }
 
         .btn-confirm {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1a2a6c;
             color: white;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-confirm:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
         }
 
         .btn-confirm:disabled {
-            opacity: 0.5;
+            background: #ccc;
             cursor: not-allowed;
         }
 
         .btn-next {
-            background: #4caf50;
+            background: #28a745;
             color: white;
             display: none;
         }
 
         .btn-next.show {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-next:hover {
-            background: #45a049;
-            transform: translateY(-2px);
+            display: block;
         }
 
         /* Tela de Resultado */
@@ -301,966 +276,356 @@
             padding: 40px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             text-align: center;
-            animation: slideIn 0.5s ease-out;
-        }
-
-        .result-screen h2 {
-            color: #667eea;
-            font-size: 2em;
-            margin-bottom: 20px;
         }
 
         .result-score {
-            font-size: 3.5em;
-            color: #764ba2;
+            font-size: 3em;
+            color: #1a2a6c;
             font-weight: bold;
-            margin: 30px 0;
-        }
-
-        .result-percentage {
-            font-size: 1.5em;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .result-message {
-            font-size: 1.3em;
-            color: #333;
-            margin-bottom: 30px;
-            line-height: 1.6;
-            padding: 20px;
-            background: #f5f5f5;
-            border-radius: 12px;
-        }
-
-        .result-details {
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            font-size: 1.1em;
-        }
-
-        .result-details p {
-            margin: 10px 0;
-            color: #666;
-        }
-
-        .result-details strong {
-            color: #333;
+            margin: 20px 0;
         }
 
         .btn-restart {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1a2a6c;
             color: white;
-            border: none;
-            padding: 18px 50px;
-            font-size: 1.1em;
+            padding: 15px 40px;
             border-radius: 50px;
+            border: none;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            font-weight: bold;
         }
 
-        .btn-restart:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
-        }
-
-        /* Animações */
         @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsivo */
         @media (max-width: 600px) {
-            .quiz-card,
-            .start-screen,
-            .result-screen {
-                padding: 25px;
-                border-radius: 15px;
-            }
-
-            .question-text {
-                font-size: 1.2em;
-            }
-
-            .option {
-                padding: 15px 15px;
-                font-size: 1em;
-            }
-
-            .option-letter {
-                width: 35px;
-                height: 35px;
-                font-size: 0.9em;
-            }
-
-            .start-screen h1 {
-                font-size: 2em;
-            }
-
-            .result-score {
-                font-size: 3em;
-            }
-
-            .btn {
-                padding: 14px 15px;
-                font-size: 1em;
-            }
-        }
-
-        @media (max-width: 400px) {
-            body {
-                padding: 10px;
-            }
-
-            .quiz-card,
-            .start-screen,
-            .result-screen {
-                padding: 20px;
-            }
-
-            .question-text {
-                font-size: 1.1em;
-            }
-
-            .option {
-                padding: 12px 12px;
-                gap: 10px;
-            }
-
-            .option-letter {
-                width: 32px;
-                height: 32px;
-                font-size: 0.85em;
-            }
-
-            .start-screen h1 {
-                font-size: 1.7em;
-            }
-
-            .result-score {
-                font-size: 2.5em;
-            }
+            .quiz-card { padding: 20px; }
+            .question-text { font-size: 1.1em; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Tela Inicial -->
-        <div class="start-screen" id="startScreen">
-            <div class="header-title">GERAÇÃO ELEITA</div>
-            <h1>📖 Quiz Gálatas</h1>
-            <p>Teste seus conhecimentos sobre a Carta aos Gálatas do Apóstolo Paulo.</p>
-            <p>Total de <strong>61 perguntas</strong> para responder.</p>
-            <button class="start-button" onclick="startQuiz()">Começar Quiz</button>
-            <div class="footer-credit">Criador: Fagner Silva</div>
-        </div>
 
-        <!-- Tela do Quiz -->
-        <div class="quiz-screen" id="quizScreen">
-            <div class="quiz-card">
-                <div class="progress-text" id="progressText">Pergunta 1 de 61</div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
-                </div>
-                <div class="score-text" id="scoreText">Acertos: 0</div>
+<div class="container">
+    <!-- Tela Inicial -->
+    <div id="start-screen" class="start-screen">
+        <div class="header-title">GERAÇÃO ELEITA</div>
+        <h1>Simulado OAB</h1>
+        <h2>Direito Constitucional</h2>
+        <p>Organização dos Poderes e Teoria da Constituição.<br>Baseado no resumo acadêmico 2026.</p>
+        <button class="start-button" onclick="startQuiz()">INICIAR SIMULADO</button>
+        <div class="footer-credit">Criador: Fagner Silva</div>
+    </div>
 
-                <div class="question-text" id="questionText"></div>
-
-                <div class="options-container" id="optionsContainer"></div>
-
-                <div class="feedback" id="feedback"></div>
-
-                <div class="buttons-container">
-                    <button class="btn btn-confirm" id="confirmBtn" onclick="confirmAnswer()">Confirmar Resposta</button>
-                    <button class="btn btn-next" id="nextBtn" onclick="nextQuestion()">Próxima Pergunta</button>
-                </div>
+    <!-- Tela do Quiz -->
+    <div id="quiz-screen" class="quiz-screen">
+        <div class="quiz-card">
+            <div class="progress-text">Questão <span id="current-q">1</span> de <span id="total-q">15</span></div>
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
             </div>
-        </div>
-
-        <!-- Tela de Resultado -->
-        <div class="result-screen" id="resultScreen">
-            <h2>Quiz Finalizado! 🎉</h2>
-            <div class="result-score" id="finalScore">0/60</div>
-            <div class="result-percentage" id="finalPercentage">0%</div>
-            <div class="result-message" id="resultMessage"></div>
-            <div class="result-details">
-                <p>Você acertou <strong id="correctCount">0</strong> perguntas de <strong>61</strong></p>
-                <p>Errou <strong id="wrongCount">0</strong> perguntas</p>
+            
+            <div id="question" class="question-text"></div>
+            
+            <div id="options" class="options-container"></div>
+            
+            <div id="feedback" class="feedback"></div>
+            
+            <div class="buttons-container">
+                <button id="btn-confirm" class="btn btn-confirm" onclick="confirmAnswer()" disabled>Confirmar Resposta</button>
+                <button id="btn-next" class="btn btn-next" onclick="nextQuestion()">Próxima Questão</button>
             </div>
-            <button class="btn-restart" onclick="restartQuiz()">Reiniciar Quiz</button>
         </div>
     </div>
 
-    <script>
-        // Dados do Quiz
-        const quizData = [
-  {
-    "question": "Com que atitude deve ser restaurado alguém que caiu em alguma falta?",
-    "options": [
-      "Com espírito de mansidão.",
-      "Com severidade e repreensão.",
-      "Com indiferença.",
-      "Com julgamento e condenação."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Quem escreveu a Carta aos Gálatas?",
-    "options": [
-      "O apóstolo Paulo.",
-      "Não.",
-      "Dar vida e justificar.",
-      "Enviou seu Filho, nascido de mulher e nascido sob a lei."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "A quem Paulo dirige essa carta?",
-    "options": [
-      "Tudo o que o homem semear, isso também colherá.",
-      "Até o tempo determinado pelo pai.",
-      "Às igrejas da Galácia.",
-      "Prostituição, impureza, idolatria, inveja, ira, discórdias, entre outras."
-    ],
-    "correct": 2
-  },
-  {
-    "question": "De onde Paulo afirma ter recebido seu apostolado?",
-    "options": [
-      "Que Deus os justificaria pela fé.",
-      "Até o tempo determinado pelo pai.",
-      "Que o homem é justificado pela fé em Cristo, não pelas obras da lei.",
-      "Não de homens, mas de Jesus Cristo e de Deus Pai."
-    ],
-    "correct": 3
-  },
-  {
-    "question": "Qual é o tema central logo no início da carta?",
-    "options": [
-      "Com espanto e repreensão.",
-      "A defesa do verdadeiro evangelho.",
-      "Para expor o evangelho que pregava entre os gentios.",
-      "Para mostrar o pecado até a vinda de Cristo."
-    ],
-    "correct": 1
-  },
-  {
-    "question": "O que estava acontecendo com os gálatas?",
-    "options": [
-      "Nos resgatou da maldição da lei.",
-      "Que o homem é justificado pela fé em Cristo, não pelas obras da lei.",
-      "A fé que atua pelo amor.",
-      "Eles estavam se afastando do verdadeiro evangelho."
-    ],
-    "correct": 3
-  },
-  {
-    "question": "Como Paulo reage à mudança dos gálatas para outro evangelho?",
-    "options": [
-      "Restaurá-lo com espírito de mansidão.",
-      "A nova vida em Cristo, vivida pela fé.",
-      "A carne luta contra o Espírito.",
-      "Com espanto e repreensão."
-    ],
-    "correct": 3
-  },
-  {
-    "question": "Existe outro evangelho além do anunciado por Paulo?",
-    "options": [
-      "Não; se a justiça viesse pela lei, então seria em vão.",
-      "Não.",
-      "Não, qualquer outro é falso.",
-      "Não, todos são um em Cristo Jesus."
-    ],
-    "correct": 2
-  },
-  {
-    "question": "O que Paulo diz sobre quem prega um evangelho diferente?",
-    "options": [
-      "Com espanto e repreensão.",
-      "Que seja anátema (amaldiçoado).",
-      "Às igrejas da Galácia.",
-      "Como um anjo de Deus, como o próprio Cristo."
-    ],
-    "correct": 1
-  },
-  {
-    "question": "Paulo buscava agradar a quem?",
-    "options": [
-      "Para mostrar o pecado até a vinda de Cristo.",
-      "A Deus, não aos homens.",
-      "Pela fé no Filho de Deus.",
-      "Que o homem é justificado pela fé em Cristo, não pelas obras da lei."
-    ],
-    "correct": 1
-  },
-  {
-    "question": "Como Paulo recebeu o evangelho que pregava?",
-    "options": [
-      "Para a liberdade.",
-      "Corrupção.",
-      "Por revelação direta de Jesus Cristo.",
-      "Os que têm fé."
-    ],
-    "correct": 2
-  },
-  {
-    "question": "Quem acompanhou Paulo a Jerusalém?",
-    "options": [
-      "Barnabé e Tito.",
-      "Para expor o evangelho que pregava entre os gentios.",
-      "A Deus, não aos homens.",
-      "Para resgatar os que estavam debaixo da lei e para que recebêssemos a adoção de filhos."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Por que Paulo foi a Jerusalém?",
-    "options": [
-      "Com espanto e repreensão.",
-      "Cristo de nada lhes aproveitaria.",
-      "Para expor o evangelho que pregava entre os gentios.",
-      "Engana a si mesmo."
-    ],
-    "correct": 2
-  },
-  {
-    "question": "Tito foi obrigado a circuncidar-se?",
-    "options": [
-      "Os que têm fé.",
-      "Dar vida e justificar.",
-      "Por revelação direta de Jesus Cristo.",
-      "Não."
-    ],
-    "correct": 3
-  },
-  {
-    "question": "Quem Paulo confrontou em Antioquia?",
-    "options": [
-      "Até o tempo determinado pelo pai.",
-      "A nova vida em Cristo, vivida pela fé.",
-      "O apóstolo Pedro.",
-      "Que Deus os justificaria pela fé."
-    ],
-    "correct": 2
-  },
-  {
-    "question": "Por que Paulo repreendeu Pedro?",
-    "options": [
-      "Para que permaneçamos livres.",
-      "Restaurá-lo com espírito de mansidão.",
-      "Torna-se filho de Deus pela fé.",
-      "Porque ele se afastava dos gentios por medo dos judeus."
-    ],
-    "correct": 3
-  },
-  {
-    "question": "O que Paulo ensina sobre a justificação?",
-    "options": [
-      "Que o homem é justificado pela fé em Cristo, não pelas obras da lei.",
-      "Por revelação direta de Jesus Cristo.",
-      "Levar as cargas uns dos outros.",
-      "Restaurá-lo com espírito de mansidão."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "O que significa \"já não sou eu quem vive, mas Cristo vive em mim\"?",
-    "options": [
-      "Não.",
-      "Para a liberdade.",
-      "A nova vida em Cristo, vivida pela fé.",
-      "Enviou seu Filho, nascido de mulher e nascido sob a lei."
-    ],
-    "correct": 2
-  },
-  {
-    "question": "A morte de Cristo foi em vão?",
-    "options": [
-      "Às igrejas da Galácia.",
-      "Um pouco de fermento leveda toda a massa.",
-      "Para resgatar os que estavam debaixo da lei e para que recebêssemos a adoção de filhos.",
-      "Não; se a justiça viesse pela lei, então seria em vão."
-    ],
-    "correct": 3
-  },
-  {
-    "question": "Como Paulo vive agora?",
-    "options": [
-      "Porque estavam voltando aos fracos e pobres rudimentos.",
-      "Pela fé no Filho de Deus.",
-      "A alegoria de Agar e Sara.",
-      "Que Deus os justificaria pela fé."
-    ],
-    "correct": 1
-  },
-  {
-    "question": "Como Paulo chama os gálatas no início do capítulo 3?",
-    "options": [
-      "Insensatos.",
-      "Cristo de nada lhes aproveitaria.",
-      "Que o homem é justificado pela fé em Cristo, não pelas obras da lei.",
-      "O seu próprio fardo."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Como os gálatas receberam o Espírito?",
-    "options": [
-      "Amor, alegria, paz, paciência, benignidade, bondade, fidelidade, mansidão e domínio próprio.",
-      "Para expor o evangelho que pregava entre os gentios.",
-      "Cristo de nada lhes aproveitaria.",
-      "Pela fé, não pelas obras da lei."
-    ],
-    "correct": 3
-  },
-  {
-    "question": "Abraão foi justificado de que maneira?",
-    "options": [
-      "Para mostrar o pecado até a vinda de Cristo.",
-      "Eles estavam se afastando do verdadeiro evangelho.",
-      "Pela fé.",
-      "Insensatos."
-    ],
-    "correct": 2
-  },
-  {
-    "question": "Quem são filhos de Abraão?",
-    "options": [
-      "Barnabé e Tito.",
-      "Os que têm fé.",
-      "Corrupção.",
-      "Restaurá-lo com espírito de mansidão."
-    ],
-    "correct": 1
-  },
-  {
-    "question": "O que a Escritura previa sobre os gentios?",
-    "options": [
-      "Não de homens, mas de Jesus Cristo e de Deus Pai.",
-      "Que Deus os justificaria pela fé.",
-      "Não, qualquer outro é falso.",
-      "A fé que atua pelo amor."
-    ],
-    "correct": 1
-  },
-  {
-    "question": "O que a lei não pode fazer?",
-    "options": [
-      "Que o homem é justificado pela fé em Cristo, não pelas obras da lei.",
-      "A fé que atua pelo amor.",
-      "Pela fé no Filho de Deus.",
-      "Dar vida e justificar."
-    ],
-    "correct": 3
-  },
-  {
-    "question": "Para que serviu a lei?",
-    "options": [
-      "Um pouco de fermento leveda toda a massa.",
-      "Por revelação direta de Jesus Cristo.",
-      "Para mostrar o pecado até a vinda de Cristo.",
-      "Dois pactos: um da escravidão (Agar) e outro da liberdade (Sara)."
-    ],
-    "correct": 2
-  },
-  {
-    "question": "O que Cristo fez ao morrer na cruz?",
-    "options": [
-      "Um pouco de fermento leveda toda a massa.",
-      "Pela fé.",
-      "Nos resgatou da maldição da lei.",
-      "Com espanto e repreensão."
-    ],
-    "correct": 2
-  },
-  {
-    "question": "O que acontece com quem está em Cristo?",
-    "options": [
-      "Prostituição, impureza, idolatria, inveja, ira, discórdias, entre outras.",
-      "Enviou seu Filho, nascido de mulher e nascido sob a lei.",
-      "Dois pactos: um da escravidão (Agar) e outro da liberdade (Sara).",
-      "Torna-se filho de Deus pela fé."
-    ],
-    "correct": 3
-  },
-  {
-    "question": "Em Cristo há diferença entre judeu e gentio?",
-    "options": [
-      "Não de homens, mas de Jesus Cristo e de Deus Pai.",
-      "Cristo de nada lhes aproveitaria.",
-      "Para resgatar os que estavam debaixo da lei e para que recebêssemos a adoção de filhos.",
-      "Não, todos são um em Cristo Jesus."
-    ],
-    "correct": 3
-  },
-  {
-    "question": "Com o que Paulo compara o herdeiro quando ainda é criança?",
-    "options": [
-      "O apóstolo Paulo.",
-      "Até o tempo determinado pelo pai.",
-      "O seu próprio fardo.",
-      "A um escravo, embora seja dono de tudo."
-    ],
-    "correct": 3
-  },
-  {
-    "question": "Até quando o herdeiro fica sujeito a tutores e curadores?",
-    "options": [
-      "Enviou seu Filho, nascido de mulher e nascido sob a lei.",
-      "Somente na cruz de Cristo.",
-      "O seu próprio fardo.",
-      "Até o tempo determinado pelo pai."
-    ],
-    "correct": 3
-  },
-  {
-    "question": "O que Deus fez quando chegou a plenitude do tempo?",
-    "options": [
-      "Que o homem é justificado pela fé em Cristo, não pelas obras da lei.",
-      "O apóstolo Pedro.",
-      "Enviou seu Filho, nascido de mulher e nascido sob a lei.",
-      "A fé que atua pelo amor."
-    ],
-    "correct": 2
-  },
-  {
-    "question": "Para que Cristo veio segundo Paulo?",
-    "options": [
-      "Às igrejas da Galácia.",
-      "Deus enviou o Espírito de seu Filho ao nosso coração que clama: \"Aba, Pai\".",
-      "Para resgatar os que estavam debaixo da lei e para que recebêssemos a adoção de filhos.",
-      "Não, qualquer outro é falso."
-    ],
-    "correct": 2
-  },
-  {
-    "question": "Qual é o sinal de que somos filhos de Deus?",
-    "options": [
-      "A fé que atua pelo amor.",
-      "Deus enviou o Espírito de seu Filho ao nosso coração que clama: \"Aba, Pai\".",
-      "Para a liberdade.",
-      "Que o homem é justificado pela fé em Cristo, não pelas obras da lei."
-    ],
-    "correct": 1
-  },
-  {
-    "question": "Depois de conhecerem a Deus, por que Paulo se admira dos gálatas?",
-    "options": [
-      "Porque estavam voltando aos fracos e pobres rudimentos.",
-      "Porque ele se afastava dos gentios por medo dos judeus.",
-      "Para resgatar os que estavam debaixo da lei e para que recebêssemos a adoção de filhos.",
-      "Pela fé no Filho de Deus."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Quais práticas os gálatas estavam observando que preocupavam Paulo?",
-    "options": [
-      "Dias, meses, tempos e anos.",
-      "Não de homens, mas de Jesus Cristo e de Deus Pai.",
-      "Porque estavam voltando aos fracos e pobres rudimentos.",
-      "A nova vida em Cristo, vivida pela fé."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Como os gálatas haviam recebido Paulo quando ele lhes pregou pela primeira vez?",
-    "options": [
-      "Não.",
-      "Como um anjo de Deus, como o próprio Cristo.",
-      "Pela fé no Filho de Deus.",
-      "Não, qualquer outro é falso."
-    ],
-    "correct": 1
-  },
-  {
-    "question": "Qual alegoria Paulo usa com as histórias de Abraão?",
-    "options": [
-      "A alegoria de Agar e Sara.",
-      "Que o homem é justificado pela fé em Cristo, não pelas obras da lei.",
-      "Para mostrar o pecado até a vinda de Cristo.",
-      "Torna-se filho de Deus pela fé."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "O que representam as duas mulheres na alegoria?",
-    "options": [
-      "Dois pactos: um da escravidão (Agar) e outro da liberdade (Sara).",
-      "Não.",
-      "Pela fé.",
-      "Que Deus os justificaria pela fé."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Para que Cristo nos libertou?",
-    "options": [
-      "Para que permaneçamos livres.",
-      "Pela fé no Filho de Deus.",
-      "Que Deus os justificaria pela fé.",
-      "Não, todos são um em Cristo Jesus."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "O que aconteceria se os gálatas aceitassem a circuncisão como obrigação?",
-    "options": [
-      "Não.",
-      "Para a liberdade.",
-      "Cristo de nada lhes aproveitaria.",
-      "Torna-se filho de Deus pela fé."
-    ],
-    "correct": 2
-  },
-  {
-    "question": "O que vale em Cristo Jesus segundo Paulo?",
-    "options": [
-      "A fé que atua pelo amor.",
-      "Pela fé.",
-      "Deus enviou o Espírito de seu Filho ao nosso coração que clama: \"Aba, Pai\".",
-      "Porque estavam voltando aos fracos e pobres rudimentos."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Que pequena coisa Paulo usa como exemplo de algo que influencia tudo?",
-    "options": [
-      "Um pouco de fermento leveda toda a massa.",
-      "Não, qualquer outro é falso.",
-      "Que Deus os justificaria pela fé.",
-      "Não de homens, mas de Jesus Cristo e de Deus Pai."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Para que os irmãos foram chamados?",
-    "options": [
-      "Para a liberdade.",
-      "Pela fé no Filho de Deus.",
-      "Não.",
-      "A Deus, não aos homens."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Como deve ser usada a liberdade cristã?",
-    "options": [
-      "Para servir uns aos outros pelo amor.",
-      "Que Deus os justificaria pela fé.",
-      "Não, todos são um em Cristo Jesus.",
-      "Porque estavam voltando aos fracos e pobres rudimentos."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Em que se resume toda a lei?",
-    "options": [
-      "Amarás o teu próximo como a ti mesmo.",
-      "Pela fé no Filho de Deus.",
-      "Não de homens, mas de Jesus Cristo e de Deus Pai.",
-      "Que o homem é justificado pela fé em Cristo, não pelas obras da lei."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Qual é o conflito descrito por Paulo no cristão?",
-    "options": [
-      "A carne luta contra o Espírito.",
-      "Para a liberdade.",
-      "Não.",
-      "Que Deus os justificaria pela fé."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Cite algumas obras da carne mencionadas por Paulo.",
-    "options": [
-      "Prostituição, impureza, idolatria, inveja, ira, discórdias, entre outras.",
-      "Pela fé.",
-      "Não, qualquer outro é falso.",
-      "Para a liberdade."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Qual é o fruto do Espírito?",
-    "options": [
-      "Amor, alegria, paz, paciência, benignidade, bondade, fidelidade, mansidão e domínio próprio.",
-      "Não.",
-      "Pela fé no Filho de Deus.",
-      "A carne luta contra o Espírito."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "O que deve fazer alguém que vê um irmão em falta?",
-    "options": [
-      "Restaurá-lo com espírito de mansidão.",
-      "Para a liberdade.",
-      "Que Deus os justificaria pela fé.",
-      "Não, qualquer outro é falso."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "O que os cristãos devem fazer uns pelos outros?",
-    "options": [
-      "Levar as cargas uns dos outros.",
-      "Pela fé.",
-      "Para a liberdade.",
-      "Não de homens, mas de Jesus Cristo e de Deus Pai."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Quem pensa ser alguma coisa sem ser, o que faz?",
-    "options": [
-      "Engana a si mesmo.",
-      "Não.",
-      "Pela fé no Filho de Deus.",
-      "Que Deus os justificaria pela fé."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Cada um deve examinar o quê?",
-    "options": [
-      "As suas próprias obras.",
-      "Para a liberdade.",
-      "Não, qualquer outro é falso.",
-      "Pela fé."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "O que cada pessoa levará?",
-    "options": [
-      "O seu próprio fardo.",
-      "Não.",
-      "Que Deus os justificaria pela fé.",
-      "Pela fé no Filho de Deus."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "O que deve fazer aquele que recebe ensino da palavra?",
-    "options": [
-      "Repartir todos os bens com quem o instrui.",
-      "Para a liberdade.",
-      "Não de homens, mas de Jesus Cristo e de Deus Pai.",
-      "Que o homem é justificado pela fé em Cristo, não pelas obras da lei."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Qual princípio Paulo ensina sobre semear e colher?",
-    "options": [
-      "Tudo o que o homem semear, isso também colherá.",
-      "Não.",
-      "Pela fé no Filho de Deus.",
-      "Que Deus os justificaria pela fé."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Quem semeia para a carne colherá o quê?",
-    "options": [
-      "Corrupção.",
-      "Para a liberdade.",
-      "Não, qualquer outro é falso.",
-      "Pela fé."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Quem semeia para o Espírito colherá o quê?",
-    "options": [
-      "Vida eterna.",
-      "Não.",
-      "Que Deus os justificaria pela fé.",
-      "Pela fé no Filho de Deus."
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Em que Paulo diz que se gloria?",
-    "options": [
-      "Somente na cruz de Cristo.",
-      "Para a liberdade.",
-      "Não de homens, mas de Jesus Cristo e de Deus Pai.",
-      "Que o homem é justificado pela fé em Cristo, não pelas obras da lei."
-    ],
-    "correct": 0
-  }
-];
+    <!-- Tela de Resultado -->
+    <div id="result-screen" class="result-screen">
+        <div class="header-title">GERAÇÃO ELEITA</div>
+        <h2>Resultado Final</h2>
+        <div id="result-score" class="result-score">0/15</div>
+        <div id="result-percentage" style="font-size: 1.2em; margin-bottom: 20px;">0%</div>
+        <div id="result-message" style="padding: 20px; background: #f8f9fa; border-radius: 12px; margin-bottom: 30px;"></div>
+        <button class="btn-restart" onclick="restartQuiz()">Reiniciar Simulado</button>
+        <div class="footer-credit">Criador: Fagner Silva</div>
+    </div>
+</div>
 
-        // Estado do Quiz
-        let currentQuestion = 0;
-        let score = 0;
-        let selectedAnswer = null;
-        let answered = false;
+<script>
+    const questions = [
+        {
+            pergunta: "O Estado Alfa editou uma lei que cria mecanismos de controle prévio pelo Poder Executivo sobre as decisões de mérito do Poder Judiciário estadual, sob a justificativa de garantir a eficiência administrativa. À luz da Constituição Federal de 1988 e da teoria da separação dos poderes, essa lei é:",
+            opcoes: [
+                "Constitucional, pois concretiza o sistema de freios e contrapesos (checks and balances).",
+                "Inconstitucional, pois viola a independência e harmonia entre os poderes, núcleo imutável da CF/88.",
+                "Constitucional, desde que haja previsão similar na Constituição Estadual.",
+                "Inconstitucional, pois o controle de mérito do Judiciário só pode ser feito pelo Poder Legislativo."
+            ],
+            correta: 1,
+            feedback: "A separação de poderes (Art. 2º da CF/88) impede que um poder interfira na função típica de outro sem previsão constitucional expressa. O controle de mérito do Judiciário pelo Executivo viola a independência judicial."
+        },
+        {
+            pergunta: "O Presidente da República edita uma Medida Provisória dispondo sobre matéria tributária. Nessa situação, o Poder Executivo está exercendo uma:",
+            opcoes: [
+                "Função típica administrativa.",
+                "Função atípica de julgamento.",
+                "Função atípica legislativa.",
+                "Função típica legislativa."
+            ],
+            correta: 2,
+            feedback: "A edição de Medidas Provisórias (Art. 62) é um exemplo de função atípica legislativa do Poder Executivo, pois sua função típica é a administrativa."
+        },
+        {
+            pergunta: "Sobre o sistema de freios e contrapesos (checks and balances), assinale a alternativa que apresenta um exemplo de controle do Poder Legislativo sobre o Poder Executivo:",
+            opcoes: [
+                "O veto presidencial a um projeto de lei aprovado pelo Congresso.",
+                "A declaração de inconstitucionalidade de um decreto pelo STF.",
+                "A competência do Congresso Nacional para fiscalizar os atos do Executivo.",
+                "A nomeação de Ministros de Estado pelo Presidente da República."
+            ],
+            correta: 2,
+            feedback: "Conforme o Art. 49, X, da CF/88, compete ao Congresso Nacional fiscalizar e controlar os atos do Poder Executivo."
+        },
+        {
+            pergunta: "No sistema bicameral federativo brasileiro, o Senado Federal é composto por representantes:",
+            opcoes: [
+                "Do povo, eleitos por sistema proporcional.",
+                "Dos Estados e do Distrito Federal, eleitos por sistema majoritário.",
+                "Dos Municípios e dos Estados, de forma paritária.",
+                "Do povo, garantindo-se o mínimo de 8 e o máximo de 70 por ente."
+            ],
+            correta: 1,
+            feedback: "O Senado Federal representa os Estados e o DF (Art. 46), com representação paritária (3 senadores por ente), enquanto a Câmara representa o povo."
+        },
+        {
+            pergunta: "A decisão histórica da Suprema Corte dos EUA no caso Marbury v. Madison (1803) é considerada o marco fundamental de qual instituto jurídico?",
+            opcoes: [
+                "O Presidencialismo de Coalizão.",
+                "O Federalismo Cooperativo.",
+                "O Judicial Review (Controle de Constitucionalidade).",
+                "O Devido Processo Legal Substantivo."
+            ],
+            correta: 2,
+            feedback: "O caso Marbury v. Madison estabeleceu o poder do Judiciário de declarar a inconstitucionalidade de leis contrárias à Constituição."
+        },
+        {
+            pergunta: "Quando o Senado Federal processa e julga o Presidente da República por crime de responsabilidade, ele está exercendo uma:",
+            opcoes: [
+                "Função típica legislativa.",
+                "Função atípica administrativa.",
+                "Função atípica de julgamento.",
+                "Função típica judiciária."
+            ],
+            correta: 2,
+            feedback: "O julgamento de autoridades pelo Legislativo (Art. 52, I e II) é uma função atípica de julgamento, pois a função típica do Legislativo é legislar e fiscalizar."
+        },
+        {
+            pergunta: "Segundo a doutrina de Montesquieu, a finalidade principal da separação de poderes é:",
+            opcoes: [
+                "Aumentar a celeridade das decisões estatais.",
+                "Evitar a concentração de poder e garantir a liberdade individual.",
+                "Subordinar o Judiciário ao Legislativo, que representa o povo.",
+                "Permitir que o soberano governe sem interferências externas."
+            ],
+            correta: 1,
+            feedback: "Montesquieu defendia que a divisão de funções evitaria o abuso de poder e protegeria a liberdade dos cidadãos contra a tirania."
+        },
+        {
+            pergunta: "Sobre a organização do Poder Legislativo nos Estados e Municípios, é correto afirmar que:",
+            opcoes: [
+                "Adotam o sistema bicameral, seguindo o modelo federal.",
+                "Adotam o sistema unicameral, composto apenas por uma Casa Legislativa.",
+                "Os Municípios possuem Senado Municipal para representar os distritos.",
+                "O Distrito Federal é o único ente subnacional com sistema bicameral."
+            ],
+            correta: 1,
+            feedback: "Diferente da União, os Estados, o DF e os Municípios adotam o sistema unicameral (Assembleias Legislativas, Câmara Legislativa e Câmaras Municipais)."
+        },
+        {
+            pergunta: "O conceito de 'Constituição Mista', que remonta às origens da ideia de separação de poderes, foi inicialmente defendido por:",
+            opcoes: [
+                "John Locke.",
+                "Barão de Montesquieu.",
+                "Aristóteles.",
+                "James Madison."
+            ],
+            correta: 2,
+            feedback: "As origens da ideia remontam a Aristóteles em sua obra 'Política', onde defendia um governo equilibrado."
+        },
+        {
+            pergunta: "A duração de uma legislatura no Brasil, de acordo com o Art. 44, parágrafo único, da CF/88, é de:",
+            opcoes: [
+                "Dois anos.",
+                "Quatro anos.",
+                "Oito anos.",
+                "Cinco anos."
+            ],
+            correta: 1,
+            feedback: "A legislatura tem duração de 4 anos, coincidindo com o mandato dos Deputados Federais."
+        },
+        {
+            pergunta: "O Poder Federativo, concebido por John Locke, referia-se à competência para:",
+            opcoes: [
+                "Legislar sobre temas de interesse nacional.",
+                "Relacionamento com estrangeiros, alianças e decisões sobre guerra e paz.",
+                "Julgar conflitos entre particulares.",
+                "Administrar as finanças públicas da comunidade."
+            ],
+            correta: 1,
+            feedback: "Locke propôs o Poder Federativo para lidar com questões externas, embora hoje essa função seja absorvida pelo Executivo."
+        },
+        {
+            pergunta: "A Constituição Federal de 1988 adotou qual modelo de separação de poderes?",
+            opcoes: [
+                "Separação rígida e absoluta.",
+                "Separação flexível, com funções típicas e atípicas.",
+                "Parlamentarismo puro, com fusão de poderes.",
+                "Supremacia absoluta do Poder Judiciário."
+            ],
+            correta: 1,
+            feedback: "A CF/88 adota a separação flexível, permitindo que poderes exerçam funções atípicas para garantir o equilíbrio do sistema."
+        },
+        {
+            pergunta: "Qual destes órgãos NÃO faz parte da estrutura do Poder Judiciário, conforme o Título IV da CF/88?",
+            opcoes: [
+                "Superior Tribunal de Justiça.",
+                "Tribunal de Contas da União.",
+                "Tribunais Regionais Federais.",
+                "Tribunal Superior do Trabalho."
+            ],
+            correta: 1,
+            feedback: "O TCU é um órgão técnico que auxilia o Congresso Nacional na fiscalização contábil, não integrando o Poder Judiciário."
+        },
+        {
+            pergunta: "A competência do Presidente da República para vetar projetos de lei por motivo de inconstitucionalidade (veto jurídico) é um exemplo de:",
+            opcoes: [
+                "Controle jurisdicional de constitucionalidade.",
+                "Controle político preventivo de constitucionalidade.",
+                "Função típica do Poder Executivo.",
+                "Abuso de prerrogativa legislativa."
+            ],
+            correta: 1,
+            feedback: "O veto jurídico é uma forma de controle de constitucionalidade exercida pelo Executivo antes da lei entrar em vigor (preventivo)."
+        },
+        {
+            pergunta: "O princípio da 'Rule of Law' (Estado de Direito), na visão de Locke, exige a separação de poderes para que:",
+            opcoes: [
+                "O Rei possa governar por decretos sem oposição.",
+                "A lei seja aplicada de forma imparcial por quem não a criou.",
+                "O povo possa revogar leis a qualquer momento.",
+                "O Judiciário tenha a última palavra sobre impostos."
+            ],
+            correta: 1,
+            feedback: "Para Locke, a imparcialidade exige que quem faz a lei (Legislativo) não seja o mesmo que a aplica (Executivo/Judiciário)."
+        }
+    ];
 
-        // Iniciar Quiz
-        function startQuiz() {
-            document.getElementById('startScreen').style.display = 'none';
-            document.getElementById('quizScreen').style.display = 'block';
-            loadQuestion();
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let selectedOptionIndex = null;
+
+    function startQuiz() {
+        document.getElementById('start-screen').style.display = 'none';
+        document.getElementById('quiz-screen').style.display = 'block';
+        showQuestion();
+    }
+
+    function showQuestion() {
+        const q = questions[currentQuestionIndex];
+        document.getElementById('current-q').innerText = currentQuestionIndex + 1;
+        document.getElementById('total-q').innerText = questions.length;
+        document.getElementById('progress-fill').style.width = ((currentQuestionIndex) / questions.length * 100) + '%';
+        
+        document.getElementById('question').innerText = q.pergunta;
+        
+        const optionsContainer = document.getElementById('options');
+        optionsContainer.innerHTML = '';
+        
+        q.opcoes.forEach((opcao, index) => {
+            const div = document.createElement('div');
+            div.className = 'option';
+            div.innerHTML = `
+                <span class="option-letter">${String.fromCharCode(65 + index)}</span>
+                <span class="option-text">${opcao}</span>
+            `;
+            div.onclick = () => selectOption(index);
+            optionsContainer.appendChild(div);
+        });
+
+        document.getElementById('feedback').className = 'feedback';
+        document.getElementById('btn-confirm').disabled = true;
+        document.getElementById('btn-next').className = 'btn btn-next';
+        selectedOptionIndex = null;
+    }
+
+    function selectOption(index) {
+        if (document.getElementById('btn-next').classList.contains('show')) return;
+        
+        selectedOptionIndex = index;
+        const options = document.querySelectorAll('.option');
+        options.forEach((opt, i) => {
+            opt.className = i === index ? 'option selected' : 'option';
+        });
+        document.getElementById('btn-confirm').disabled = false;
+    }
+
+    function confirmAnswer() {
+        const q = questions[currentQuestionIndex];
+        const options = document.querySelectorAll('.option');
+        const feedback = document.getElementById('feedback');
+        
+        options.forEach((opt, i) => {
+            opt.classList.add('disabled');
+            if (i === q.correta) opt.classList.add('correct');
+            if (i === selectedOptionIndex && i !== q.correta) opt.classList.add('incorrect');
+        });
+
+        if (selectedOptionIndex === q.correta) {
+            score++;
+            feedback.innerText = "Correto! " + q.feedback;
+            feedback.className = "feedback show correct";
+        } else {
+            feedback.innerText = "Resposta Incorreta. " + q.feedback;
+            feedback.className = "feedback show incorrect";
         }
 
-        // Carregar Pergunta
-        function loadQuestion() {
-            const question = quizData[currentQuestion];
-            answered = false;
-            selectedAnswer = null;
+        document.getElementById('btn-confirm').disabled = true;
+        document.getElementById('btn-next').className = 'btn btn-next show';
+    }
 
-            // Atualizar textos
-            document.getElementById('progressText').textContent = `Pergunta ${currentQuestion + 1} de 61`;
-            document.getElementById('scoreText').textContent = `Acertos: ${score}`;
-            document.getElementById('questionText').textContent = question.question;
-
-            // Atualizar barra de progresso
-            const progress = ((currentQuestion + 1) / quizData.length) * 100;
-            document.getElementById('progressFill').style.width = progress + '%';
-
-            // Limpar feedback
-            const feedback = document.getElementById('feedback');
-            feedback.classList.remove('show', 'correct', 'incorrect');
-            feedback.textContent = '';
-
-            // Renderizar opções
-            const container = document.getElementById('optionsContainer');
-            container.innerHTML = '';
-
-            question.options.forEach((option, index) => {
-                const div = document.createElement('div');
-                div.className = 'option';
-                div.onclick = () => selectAnswer(index);
-                div.innerHTML = `
-                    <div class="option-letter">${String.fromCharCode(65 + index)}</div>
-                    <div class="option-text">${option}</div>
-                `;
-                container.appendChild(div);
-            });
-
-            // Resetar botões
-            document.getElementById('confirmBtn').disabled = false;
-            document.getElementById('confirmBtn').style.display = 'block';
-            document.getElementById('nextBtn').classList.remove('show');
+    function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+            showQuestion();
+        } else {
+            showResult();
         }
+    }
 
-        // Selecionar Resposta
-        function selectAnswer(index) {
-            if (answered) return;
+    function showResult() {
+        document.getElementById('quiz-screen').style.display = 'none';
+        document.getElementById('result-screen').style.display = 'block';
+        
+        const percentage = Math.round((score / questions.length) * 100);
+        document.getElementById('result-score').innerText = `${score}/${questions.length}`;
+        document.getElementById('result-percentage').innerText = `${percentage}% de acerto`;
+        
+        let message = "";
+        if (percentage >= 80) message = "Excelente! Você tem um domínio excepcional da Organização dos Poderes. Continue assim para a OAB!";
+        else if (percentage >= 50) message = "Bom desempenho! Você conhece os fundamentos, mas vale revisar os detalhes das funções atípicas e do sistema de freios e contrapesos.";
+        else message = "Precisa melhorar. O tema de Organização dos Poderes é recorrente na OAB. Releia o resumo e tente o simulado novamente!";
+        
+        document.getElementById('result-message').innerText = message;
+    }
 
-            // Remover seleção anterior
-            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+    function restartQuiz() {
+        currentQuestionIndex = 0;
+        score = 0;
+        document.getElementById('result-screen').style.display = 'none';
+        document.getElementById('start-screen').style.display = 'block';
+    }
+</script>
 
-            // Adicionar nova seleção
-            selectedAnswer = index;
-            document.querySelectorAll('.option')[index].classList.add('selected');
-        }
-
-        // Confirmar Resposta
-        function confirmAnswer() {
-            if (selectedAnswer === null) {
-                alert('Por favor, selecione uma resposta!');
-                return;
-            }
-
-            answered = true;
-            const question = quizData[currentQuestion];
-            const isCorrect = selectedAnswer === question.correct;
-
-            // Mostrar resultado
-            const options = document.querySelectorAll('.option');
-            options.forEach(opt => opt.classList.add('disabled'));
-
-            // Destacar resposta correta
-            options[question.correct].classList.add('correct');
-
-            // Destacar resposta do usuário se errada
-            if (!isCorrect) {
-                options[selectedAnswer].classList.add('incorrect');
-            }
-
-            // Atualizar score
-            if (isCorrect) {
-                score++;
-                document.getElementById('scoreText').textContent = `Acertos: ${score}`;
-            }
-
-            // Mostrar feedback
-            const feedback = document.getElementById('feedback');
-            feedback.classList.add('show');
-            if (isCorrect) {
-                feedback.classList.add('correct');
-                feedback.textContent = '✓ Correto!';
-            } else {
-                feedback.classList.add('incorrect');
-                feedback.textContent = '✗ Resposta Incorreta';
-            }
-
-            // Mostrar botão próxima
-            document.getElementById('confirmBtn').style.display = 'none';
-            document.getElementById('nextBtn').classList.add('show');
-        }
-
-        // Próxima Pergunta
-        function nextQuestion() {
-            currentQuestion++;
-
-            if (currentQuestion < quizData.length) {
-                loadQuestion();
-            } else {
-                showResults();
-            }
-        }
-
-        // Mostrar Resultados
-        function showResults() {
-            document.getElementById('quizScreen').style.display = 'none';
-            document.getElementById('resultScreen').style.display = 'block';
-
-            const percentage = Math.round((score / quizData.length) * 100);
-            let message = '';
-
-            if (percentage >= 80) {
-                message = '🌟 Excelente! Você tem um excelente conhecimento sobre a Carta aos Gálatas!';
-            } else if (percentage >= 50) {
-                message = '👍 Bom! Você tem um bom conhecimento, mas pode melhorar ainda mais!';
-            } else {
-                message = '📚 Precisa melhorar! Continue estudando a Carta aos Gálatas!';
-            }
-
-            document.getElementById('finalScore').textContent = `${score}/61`;
-            document.getElementById('finalPercentage').textContent = `${percentage}%`;
-            document.getElementById('resultMessage').textContent = message;
-            document.getElementById('correctCount').textContent = score;
-            document.getElementById('wrongCount').textContent = 61 - score;
-        }
-
-        // Reiniciar Quiz
-        function restartQuiz() {
-            currentQuestion = 0;
-            score = 0;
-            selectedAnswer = null;
-            answered = false;
-
-            document.getElementById('resultScreen').style.display = 'none';
-            document.getElementById('startScreen').style.display = 'block';
-        }
-    </script>
 </body>
 </html>
