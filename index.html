@@ -253,6 +253,11 @@
             color: white;
         }
 
+        .btn-confirm:hover:not(:disabled) {
+            background: #0f1a3f;
+            transform: translateY(-2px);
+        }
+
         .btn-confirm:disabled {
             background: #ccc;
             cursor: not-allowed;
@@ -265,7 +270,14 @@
         }
 
         .btn-next.show {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-next:hover {
+            background: #218838;
+            transform: translateY(-2px);
         }
 
         /* Tela de Resultado */
@@ -276,13 +288,36 @@
             padding: 40px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             text-align: center;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .result-screen h2 {
+            color: #1a2a6c;
+            font-size: 1.8em;
+            margin-bottom: 20px;
         }
 
         .result-score {
             font-size: 3em;
-            color: #1a2a6c;
+            color: #b21f1f;
             font-weight: bold;
             margin: 20px 0;
+        }
+
+        .result-percentage {
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .result-message {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            font-size: 1.05em;
+            line-height: 1.6;
+            color: #333;
         }
 
         .btn-restart {
@@ -293,6 +328,13 @@
             border: none;
             cursor: pointer;
             font-weight: bold;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .btn-restart:hover {
+            background: #0f1a3f;
+            transform: translateY(-2px);
         }
 
         @keyframes slideIn {
@@ -303,6 +345,7 @@
         @media (max-width: 600px) {
             .quiz-card { padding: 20px; }
             .question-text { font-size: 1.1em; }
+            .start-screen { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -313,7 +356,7 @@
     <div id="start-screen" class="start-screen">
         <div class="header-title">GERAÇÃO ELEITA</div>
         <h1>Simulado OAB</h1>
-        <h2>Direito Constitucional</h2>
+        <h2 style="color: #666; font-size: 1.2em; margin-bottom: 20px;">Direito Constitucional</h2>
         <p>Organização dos Poderes e Teoria da Constituição.<br>Baseado no resumo acadêmico 2026.</p>
         <button class="start-button" onclick="startQuiz()">INICIAR SIMULADO</button>
         <div class="footer-credit">Criador: Fagner Silva</div>
@@ -345,8 +388,8 @@
         <div class="header-title">GERAÇÃO ELEITA</div>
         <h2>Resultado Final</h2>
         <div id="result-score" class="result-score">0/15</div>
-        <div id="result-percentage" style="font-size: 1.2em; margin-bottom: 20px;">0%</div>
-        <div id="result-message" style="padding: 20px; background: #f8f9fa; border-radius: 12px; margin-bottom: 30px;"></div>
+        <div id="result-percentage" class="result-percentage">0%</div>
+        <div id="result-message" class="result-message"></div>
         <button class="btn-restart" onclick="restartQuiz()">Reiniciar Simulado</button>
         <div class="footer-credit">Criador: Fagner Silva</div>
     </div>
@@ -524,20 +567,28 @@
     let currentQuestionIndex = 0;
     let score = 0;
     let selectedOptionIndex = null;
+    let answerConfirmed = false;
 
     function startQuiz() {
+        currentQuestionIndex = 0;
+        score = 0;
+        selectedOptionIndex = null;
+        answerConfirmed = false;
+        
         document.getElementById('start-screen').style.display = 'none';
         document.getElementById('quiz-screen').style.display = 'block';
+        document.getElementById('result-screen').style.display = 'none';
+        
         showQuestion();
     }
 
     function showQuestion() {
         const q = questions[currentQuestionIndex];
-        document.getElementById('current-q').innerText = currentQuestionIndex + 1;
-        document.getElementById('total-q').innerText = questions.length;
-        document.getElementById('progress-fill').style.width = ((currentQuestionIndex) / questions.length * 100) + '%';
+        document.getElementById('current-q').textContent = currentQuestionIndex + 1;
+        document.getElementById('total-q').textContent = questions.length;
+        document.getElementById('progress-fill').style.width = ((currentQuestionIndex + 1) / questions.length * 100) + '%';
         
-        document.getElementById('question').innerText = q.pergunta;
+        document.getElementById('question').textContent = q.pergunta;
         
         const optionsContainer = document.getElementById('options');
         optionsContainer.innerHTML = '';
@@ -554,44 +605,62 @@
         });
 
         document.getElementById('feedback').className = 'feedback';
+        document.getElementById('feedback').textContent = '';
         document.getElementById('btn-confirm').disabled = true;
-        document.getElementById('btn-next').className = 'btn btn-next';
+        document.getElementById('btn-confirm').style.display = 'block';
+        document.getElementById('btn-next').classList.remove('show');
+        document.getElementById('btn-next').style.display = 'none';
+        
         selectedOptionIndex = null;
+        answerConfirmed = false;
     }
 
     function selectOption(index) {
-        if (document.getElementById('btn-next').classList.contains('show')) return;
+        if (answerConfirmed) return;
         
         selectedOptionIndex = index;
         const options = document.querySelectorAll('.option');
         options.forEach((opt, i) => {
-            opt.className = i === index ? 'option selected' : 'option';
+            if (i === index) {
+                opt.className = 'option selected';
+            } else {
+                opt.className = 'option';
+            }
         });
         document.getElementById('btn-confirm').disabled = false;
     }
 
     function confirmAnswer() {
+        if (selectedOptionIndex === null) return;
+        
+        answerConfirmed = true;
         const q = questions[currentQuestionIndex];
         const options = document.querySelectorAll('.option');
         const feedback = document.getElementById('feedback');
         
         options.forEach((opt, i) => {
             opt.classList.add('disabled');
-            if (i === q.correta) opt.classList.add('correct');
-            if (i === selectedOptionIndex && i !== q.correta) opt.classList.add('incorrect');
+            if (i === q.correta) {
+                opt.classList.add('correct');
+            }
+            if (i === selectedOptionIndex && i !== q.correta) {
+                opt.classList.add('incorrect');
+            }
         });
 
         if (selectedOptionIndex === q.correta) {
             score++;
-            feedback.innerText = "Correto! " + q.feedback;
+            feedback.textContent = "✓ Correto! " + q.feedback;
             feedback.className = "feedback show correct";
         } else {
-            feedback.innerText = "Resposta Incorreta. " + q.feedback;
+            feedback.textContent = "✗ Resposta Incorreta. " + q.feedback;
             feedback.className = "feedback show incorrect";
         }
 
         document.getElementById('btn-confirm').disabled = true;
-        document.getElementById('btn-next').className = 'btn btn-next show';
+        document.getElementById('btn-confirm').style.display = 'none';
+        document.getElementById('btn-next').classList.add('show');
+        document.getElementById('btn-next').style.display = 'flex';
     }
 
     function nextQuestion() {
@@ -608,22 +677,23 @@
         document.getElementById('result-screen').style.display = 'block';
         
         const percentage = Math.round((score / questions.length) * 100);
-        document.getElementById('result-score').innerText = `${score}/${questions.length}`;
-        document.getElementById('result-percentage').innerText = `${percentage}% de acerto`;
+        document.getElementById('result-score').textContent = `${score}/${questions.length}`;
+        document.getElementById('result-percentage').textContent = `${percentage}% de acerto`;
         
         let message = "";
-        if (percentage >= 80) message = "Excelente! Você tem um domínio excepcional da Organização dos Poderes. Continue assim para a OAB!";
-        else if (percentage >= 50) message = "Bom desempenho! Você conhece os fundamentos, mas vale revisar os detalhes das funções atípicas e do sistema de freios e contrapesos.";
-        else message = "Precisa melhorar. O tema de Organização dos Poderes é recorrente na OAB. Releia o resumo e tente o simulado novamente!";
+        if (percentage >= 80) {
+            message = "🎉 Excelente! Você tem um domínio excepcional da Organização dos Poderes. Continue assim para a OAB!";
+        } else if (percentage >= 50) {
+            message = "👍 Bom desempenho! Você conhece os fundamentos, mas vale revisar os detalhes das funções atípicas e do sistema de freios e contrapesos.";
+        } else {
+            message = "📚 Precisa melhorar. O tema de Organização dos Poderes é recorrente na OAB. Releia o resumo e tente o simulado novamente!";
+        }
         
-        document.getElementById('result-message').innerText = message;
+        document.getElementById('result-message').textContent = message;
     }
 
     function restartQuiz() {
-        currentQuestionIndex = 0;
-        score = 0;
-        document.getElementById('result-screen').style.display = 'none';
-        document.getElementById('start-screen').style.display = 'block';
+        startQuiz();
     }
 </script>
 
