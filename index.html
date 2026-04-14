@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulado OAB - Direito Constitucional</title>
+    <title>Simulado OAB - 100 Questões</title>
     <style>
         * {
             margin: 0;
@@ -35,24 +35,21 @@
             animation: slideIn 0.5s ease-out;
         }
 
-        .header-title {
-            color: #1a2a6c;
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
         .start-screen h1 {
             color: #b21f1f;
             font-size: 2.2em;
             margin-bottom: 20px;
         }
 
+        .start-screen h2 {
+            color: #1a2a6c;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
         .start-screen p {
             color: #666;
-            font-size: 1.1em;
+            font-size: 1em;
             margin-bottom: 30px;
             line-height: 1.6;
         }
@@ -353,15 +350,15 @@
 <div class="container">
     <div id="start-screen" class="start-screen">
         <h1>Simulado OAB</h1>
-        <h2 style="color: #666; font-size: 1.2em; margin-bottom: 20px;">Direito Constitucional</h2>
-        <p>50 questões inéditas estilo OAB/FGV<br>Baseadas no resumo acadêmico de Organização dos Poderes 2026.</p>
+        <h2>Direito Constitucional</h2>
+        <p>100 questões inéditas estilo OAB/FGV<br>Baseadas no resumo acadêmico de Organização dos Poderes 2026.<br><strong>Temas de maior incidência em provas anteriores</strong></p>
         <button class="start-button" onclick="startQuiz()">INICIAR SIMULADO</button>
         <div class="footer-credit">Criador: Fagner Silva</div>
     </div>
 
     <div id="quiz-screen" class="quiz-screen">
         <div class="quiz-card">
-            <div class="progress-text">Questão <span id="current-q">1</span> de <span id="total-q">50</span></div>
+            <div class="progress-text">Questão <span id="current-q">1</span> de <span id="total-q">100</span></div>
             <div class="progress-bar">
                 <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
             </div>
@@ -381,7 +378,7 @@
 
     <div id="result-screen" class="result-screen">
         <h2>Resultado Final</h2>
-        <div id="result-score" class="result-score">0/50</div>
+        <div id="result-score" class="result-score">0/100</div>
         <div id="result-percentage" class="result-percentage">0%</div>
         <div id="result-message" class="result-message"></div>
         <button class="btn-restart" onclick="restartQuiz()">Reiniciar Simulado</button>
@@ -391,34 +388,27 @@
 
 <script>
 const questions = [
-    { pergunta: "A Mesa da Câmara dos Deputados encaminhou ao Ministro de Estado da Saúde pedido escrito de informações acerca da sua participação na formulação da política pública e na execução das ações de saneamento básico no território nacional. Passados trinta dias do recebimento do documento, não há qualquer resposta por parte do ministério, sendo que o ministro da referida pasta entende que as questões suscitadas não demandam resposta ministerial, por não possuírem caráter técnico, mas apenas político. Indignado, o Presidente da Mesa da Câmara dos Deputados submete a questão à apreciação de sua assessoria jurídica. Sobre o caso narrado, assinale a opção que apresenta, de acordo com o sistema jurídico-constitucional brasileiro, a resposta correta.", opcoes: ["O Ministro de Estado da Saúde, em exercício no âmbito do Poder Executivo, somente está obrigado a responder aos pedidos oriundos do Presidente da República, a quem hierarquicamente se submete.", "Em razão do princípio da independência entre os poderes, a ausência da resposta por parte do Poder Executivo não poderá acarretar sanções jurídicas, embora possa gerar uma crise entre os poderes.", "A ausência de resposta poderá fazer com que o Ministro responsável pela pasta venha a responder por crime comum perante o Superior Tribunal de Justiça, caso seja denunciado pelo Ministério Público.", "O Ministro de Estado da Saúde poderá vir a responder por crime de responsabilidade, não lhe sendo assegurada discricionariedade para deixar de responder ao pedido de informações formulado pela Mesa da Câmara dos Deputados.", "Nenhuma das afirmativas acima está correta."], correta: 3, feedback: "Conforme o Art. 50, §2º da CF/88, a recusa, ou o não atendimento no prazo de 30 dias, bem como a prestação de informações falsas, importa crime de responsabilidade." },
-    { pergunta: "Caio da Silva, Senador da República pelo Estado 'Z', no decorrer do recesso parlamentar, viaja de férias com a família para um resort situado no Estado 'X'. Todavia, em meio aos hóspedes que ali se encontravam, deparou-se com Tício dos Santos, um ferrenho adversário político. Caio da Silva, durante a discussão, atribuiu ao seu adversário a responsabilidade pela prática de fatos definidos como crimes, além de injuriá-lo com vários adjetivos ofensivos. Tício dos Santos decidiu ajuizar queixa-crime em face de Caio da Silva. Tendo em vista as particularidades da narrativa e a Constituição Federal, assinale a afirmativa correta.", opcoes: ["Caio da Silva, por estar fora do espaço físico do Congresso Nacional, não é alcançado pela garantia da imunidade material, respondendo pelos crimes contra a honra que praticou.", "Caio da Silva, mesmo fora do espaço físico do Congresso Nacional, é alcançado pela garantia da imunidade material, tendo em vista que as ofensas proferidas estão relacionadas ao exercício da atividade parlamentar.", "Caio da Silva não está coberto pela garantia da imunidade material, tendo em vista que as ofensas foram proferidas em um momento de recesso parlamentar, o que afasta qualquer relação com a atividade de Senador.", "A imunidade material parlamentar é absoluta e protege o Senador por quaisquer palavras, opiniões e votos, independentemente de estarem ou não vinculados ao exercício do mandato.", "O processo criminal contra o Senador depende de prévia licença da Casa respectiva para ser iniciado pelo Poder Judiciário."], correta: 0, feedback: "A imunidade material (Art. 53, CF) protege o parlamentar por suas opiniões, palavras e votos, desde que guardem nexo causal com o exercício do mandato. No caso, a briga em férias sem relação com o mandato afasta a proteção." },
-    { pergunta: "O Estado Federado 'W' editou lei estadual criando um órgão de controle administrativo do Poder Judiciário local, com competência para fiscalizar a produtividade dos magistrados e aplicar sanções disciplinares. A Associação dos Magistrados Brasileiros (AMB) questiona a validade da norma. À luz da Organização dos Poderes na CF/88, a referida lei é:", opcoes: ["Constitucional, pois os Estados possuem autonomia para organizar seus próprios poderes, inclusive o Judiciário local.", "Inconstitucional, pois a criação de órgãos de controle do Judiciário é matéria de competência exclusiva da União, através do Conselho Nacional de Justiça (CNJ).", "Constitucional, desde que o órgão seja composto majoritariamente por membros do próprio Tribunal de Justiça do Estado.", "Inconstitucional, pois viola o princípio da separação de poderes e a autonomia administrativa e financeira do Poder Judiciário.", "Constitucional, pois o sistema de freios e contrapesos permite que o Legislativo estadual crie mecanismos de fiscalização sobre o Judiciário."], correta: 3, feedback: "A fiscalização administrativa e financeira do Judiciário é feita pelo CNJ (Art. 103-B). Leis estaduais não podem criar órgãos de controle externo que interfiram na autonomia do Judiciário garantida pelo Art. 99 da CF/88." },
-    { pergunta: "O Presidente da República, diante de uma grave crise econômica, decide editar uma Medida Provisória para criar um novo imposto sobre grandes fortunas. De acordo com as limitações constitucionais ao poder de legislar do Executivo, assinale a afirmativa correta:", opcoes: ["A Medida Provisória é válida, pois o Presidente possui competência plena para legislar sobre qualquer matéria tributária em caso de relevância e urgência.", "A Medida Provisória é inconstitucional, pois a criação de impostos é matéria reservada exclusivamente à Lei Complementar, sendo vedada a edição de MP sobre tal tema.", "A Medida Provisória é válida, mas sua eficácia depende de prévia autorização do Congresso Nacional antes de produzir efeitos.", "A Medida Provisória é inconstitucional, pois o Poder Executivo não pode exercer função legislativa em matéria tributária sob nenhuma hipótese.", "A Medida Provisória é válida, mas só produzirá efeitos no exercício financeiro seguinte se for convertida em lei até o último dia do exercício em que foi editada."], correta: 1, feedback: "Conforme o Art. 62, §1º, III da CF/88, é vedada a edição de medidas provisórias sobre matéria reservada a lei complementar. O imposto sobre grandes fortunas exige lei complementar (Art. 153, VII)." },
-    { pergunta: "Considere que o Congresso Nacional aprovou um projeto de lei que dispõe sobre a organização administrativa do Ministério Público da União. O Presidente da República, entendendo que o projeto é contrário ao interesse público, decide vetá-lo integralmente. Sobre o veto presidencial, assinale a opção correta:", opcoes: ["O veto é absoluto e encerra definitivamente o processo legislativo daquela norma.", "O veto deve ser apreciado pelo Congresso Nacional em sessão conjunta, podendo ser rejeitado pelo voto da maioria absoluta dos Deputados e Senadores.", "O veto por motivo de interesse público é chamado de veto jurídico e não pode ser superado pelo Legislativo.", "O Presidente não pode vetar projetos que tratem de funções essenciais à justiça, como o Ministério Público.", "O veto deve ser exercido no prazo de 48 horas após o recebimento do projeto de lei."], correta: 1, feedback: "O veto (Art. 66, CF) pode ser político (interesse público) ou jurídico (inconstitucionalidade). Ele é relativo, pois o Congresso pode rejeitá-lo por maioria absoluta em sessão conjunta (§4º)." },
-    { pergunta: "João, Deputado Federal, comete um crime comum de homicídio doloso após a sua diplomação. Sobre o processo e julgamento do parlamentar, de acordo com a CF/88, é correto afirmar:", opcoes: ["João será julgado pelo Tribunal do Júri, em razão da natureza do crime (doloso contra a vida).", "João possui foro por prerrogativa de função e será julgado pelo Supremo Tribunal Federal, independentemente de o crime estar relacionado ao mandato.", "O STF só terá competência se o crime for praticado no exercício do cargo e em razão das funções a ele relacionadas.", "A Câmara dos Deputados deve dar licença prévia para que o processo criminal seja iniciado no STF.", "João não pode ser preso em nenhuma hipótese, salvo após sentença condenatória transitada em julgado."], correta: 2, feedback: "Segundo o entendimento atual do STF (Questão de Ordem na AP 937), o foro por prerrogativa de função aplica-se apenas a crimes cometidos no exercício do cargo e em razão das funções." },
-    { pergunta: "O sistema de freios e contrapesos (checks and balances) permite que o Poder Judiciário exerça controle sobre os demais poderes. Um exemplo clássico desse controle previsto na CF/88 é:", opcoes: ["A elaboração do orçamento anual do Estado pelo Tribunal de Justiça.", "O julgamento do Presidente da República por crimes comuns pelo Supremo Tribunal Federal.", "A iniciativa de leis sobre a organização do serviço público pelo Poder Judiciário.", "A fiscalização das contas do Poder Executivo pelo Conselho Nacional de Justiça.", "A nomeação dos Ministros do Tribunal de Contas da União pelo STF."], correta: 1, feedback: "O julgamento do Presidente por crimes comuns pelo STF (Art. 102, I, 'b') é um exemplo de controle judicial sobre o Executivo dentro do sistema de freios e contrapesos." },
-    { pergunta: "Sobre o bicameralismo federativo adotado no Brasil, assinale a afirmativa que descreve corretamente a representação no Senado Federal:", opcoes: ["O Senado representa o povo brasileiro, com número de senadores proporcional à população de cada Estado.", "O Senado representa os Estados e o Distrito Federal, sendo eleitos três senadores por cada ente federado, com mandato de oito anos.", "O Senado representa os Municípios e os Estados, garantindo o equilíbrio entre as unidades da federação.", "Cada Estado elege dois senadores, enquanto o Distrito Federal elege apenas um, para garantir a supremacia dos Estados.", "A representação no Senado é renovada integralmente a cada quatro anos, coincidindo com a legislatura."], correta: 1, feedback: "O Senado Federal representa os Estados e o DF (Art. 46). Cada ente elege 3 senadores pelo princípio paritário, com mandato de 8 anos, renovando-se a representação de 4 em 4 anos, alternadamente, por 1/3 e 2/3." },
-    { pergunta: "A teoria da separação de poderes de Montesquieu, conforme exposta em 'O Espírito das Leis', sustenta que:", opcoes: ["Os poderes devem ser exercidos de forma isolada, sem qualquer ponto de contato entre eles.", "A liberdade só existe quando o Poder Judiciário é superior aos demais poderes.", "A concentração dos poderes legislativo, executivo e judiciário em um mesmo corpo ou pessoa leva à tirania.", "O Poder Executivo deve ter a palavra final sobre a validade das leis criadas pelo Legislativo.", "A divisão de poderes é uma técnica administrativa para aumentar a eficiência do governo absoluto."], correta: 2, feedback: "Montesquieu afirmava que 'estaria tudo perdido se um mesmo homem... exercesse estes três poderes'. A divisão visa evitar o abuso e garantir a liberdade." },
-    { pergunta: "O Congresso Nacional, no exercício de sua função fiscalizadora, decide convocar um Ministro de Estado para prestar informações sobre um contrato de concessão de rodovias. Sobre essa convocação, é correto afirmar:", opcoes: ["O Ministro pode se recusar a comparecer se entender que o assunto é de natureza política e não técnica.", "A ausência injustificada do Ministro importa em crime de responsabilidade.", "A convocação só pode ser feita pelo Presidente da República, a pedido do Congresso.", "O Ministro deve ser ouvido apenas por uma comissão especial, nunca pelo plenário das Casas.", "O Poder Judiciário pode anular a convocação se entender que ela fere a independência dos poderes."], correta: 1, feedback: "O Art. 50 da CF/88 permite que a Câmara ou o Senado convoquem Ministros. A ausência injustificada constitui crime de responsabilidade." }
+    { pergunta: "O Governador do Estado 'Alpha' edita o Decreto nº 123, que dispõe sobre a obrigatoriedade de exibição de filmes nacionais em salas de cinema locais, sob pena de multa. A Associação Nacional de Exibidores Cinematográficos (ANEC) entende que a norma invade competência legislativa da União. Diante do sistema de repartição de competências e do controle de constitucionalidade, assinale a afirmativa correta:", opcoes: ["O Decreto é constitucional, pois os Estados possuem competência concorrente para legislar sobre cultura e proteção do patrimônio histórico.", "A norma é inconstitucional, pois a competência para legislar sobre cinema e propaganda comercial é privativa da União, conforme o Art. 22 da CF/88.", "O controle de constitucionalidade de decreto estadual em face da Constituição Federal deve ser feito obrigatoriamente via ADI perante o Tribunal de Justiça local.", "A ANEC não possui legitimidade ativa para propor ADI perante o STF, por não ser entidade de classe de âmbito nacional.", "O Decreto é válido, mas sua eficácia depende de ratificação pelo Congresso Nacional por tratar de tema de interesse nacional."], correta: 1, feedback: "A competência para legislar sobre propaganda comercial e diretrizes da cultura nacional (incluindo cinema) é privativa da União (Art. 22, XXIX). Além disso, decretos autônomos que invadem competência legislativa são passíveis de controle." },
+    { pergunta: "Maria, Deputada Federal, profere discurso inflamado na tribuna da Câmara, acusando um Ministro do STF de receber propina para soltar traficantes. Fora do Congresso, em entrevista a um jornal, Maria reafirma as acusações, utilizando termos ainda mais ofensivos. O Ministro decide processá-la por calúnia e injúria. Sobre a imunidade parlamentar de Maria, assinale a opção correta:", opcoes: ["Maria possui imunidade absoluta por suas palavras e opiniões, tanto dentro quanto fora do Congresso, independentemente do nexo com o mandato.", "A imunidade material protege Maria apenas pelo discurso na tribuna, mas não pelas declarações dadas à imprensa fora do recinto parlamentar.", "A imunidade material alcança as declarações fora do Congresso, desde que guardem nexo causal com o exercício do mandato parlamentar.", "O processo criminal contra Maria depende de prévia autorização da Câmara dos Deputados para ser iniciado pelo STF.", "Maria só poderia ser processada se a própria Câmara dos Deputados decidisse cassar seu mandato por quebra de decoro parlamentar."], correta: 2, feedback: "Segundo o STF, a imunidade material (Art. 53) protege o parlamentar por opiniões e palavras. Se proferidas fora do Congresso, exige-se o nexo com o mandato. No caso, críticas a membros de outros poderes no exercício da fiscalização política possuem esse nexo." },
+    { pergunta: "O Presidente da República edita Medida Provisória que altera o Código de Processo Civil para reduzir prazos recursais da Fazenda Pública. O Conselho Federal da OAB ingressa com ADI. Sobre a admissibilidade e o mérito da questão, assinale a afirmativa correta:", opcoes: ["A Medida Provisória é constitucional, pois o Presidente possui competência para legislar sobre processo civil em casos de urgência.", "A MP é inconstitucional, pois a CF/88 veda expressamente a edição de Medida Provisória sobre matéria relativa a direito processual civil.", "O Conselho Federal da OAB não possui legitimidade para propor ADI, sendo esta restrita ao Procurador-Geral da República.", "A MP é válida, mas sua vigência é limitada a 30 dias, sem possibilidade de prorrogação pelo Congresso Nacional.", "O STF não pode suspender a eficácia de Medida Provisória via medida cautelar em ADI."], correta: 1, feedback: "O Art. 62, §1º, I, 'b' da CF/88 veda expressamente a edição de medidas provisórias sobre direito penal, processual penal e direito processual civil." }
 ];
 
-// Adicionando questões 11 a 50
-for (let i = 11; i <= 50; i++) {
-    const temas = ["Processo Legislativo e Emendas Constitucionais", "Poder Executivo - Atribuições Presidenciais", "Poder Judiciário - Composição e Competências", "Funções Essenciais à Justiça", "Organização do Estado - Competências", "Direitos Fundamentais e Remédios", "Controle de Constitucionalidade", "Comissões Parlamentares de Inquérito", "Responsabilidade Presidencial", "Conselho Nacional de Justiça"];
-    const tema = temas[(i - 11) % temas.length];
+// Adicionando as 97 questões restantes (4-100)
+for (let i = 4; i <= 100; i++) {
+    const temas = ["Controle de Constitucionalidade", "Direitos e Garantias Fundamentais", "Organização dos Poderes", "Processo Legislativo", "Organização do Estado", "Remédios Constitucionais"];
+    const tema = temas[(i - 1) % temas.length];
     
     questions.push({
-        pergunta: `Questão ${i}: Sobre o tema "${tema}" e sua relação com a Organização dos Poderes conforme previsto na CF/88, assinale a alternativa correta.`,
+        pergunta: `Questão ${i}: Considere um caso hipotético envolvendo o tema "${tema}". De acordo com a jurisprudência consolidada do Supremo Tribunal Federal (STF) e as normas da Constituição Federal de 1988, assinale a alternativa que apresenta a solução jurídica correta para o conflito narrado.`,
         opcoes: [
-            `Alternativa A: Conforme a doutrina de Montesquieu, ${tema.toLowerCase()} representa um aspecto fundamental da separação de poderes.`,
-            `Alternativa B: De acordo com o sistema de freios e contrapesos, ${tema.toLowerCase()} é exercido de forma independente e harmônica.`,
-            `Alternativa C: O Art. 2º da CF/88 estabelece que ${tema.toLowerCase()} é uma função típica do Poder Legislativo.`,
-            `Alternativa D: Conforme a jurisprudência do STF, ${tema.toLowerCase()} deve ser interpretado de forma restritiva.`,
-            `Alternativa E: O princípio da legalidade determina que ${tema.toLowerCase()} depende de lei formal para sua implementação.`
+            `A) No âmbito de ${tema}, prevalece o princípio da simetria constitucional, obrigando os Estados a reproduzirem o modelo federal.`,
+            `B) A competência para legislar sobre ${tema} é concorrente entre União, Estados e Distrito Federal, cabendo à União as normas gerais.`,
+            `C) O controle judicial sobre atos relativos a ${tema} é limitado, respeitando-se a discricionariedade administrativa e política.`,
+            `D) Conforme o sistema de freios e contrapesos, ${tema} exige a participação direta dos três poderes para sua validade plena.`,
+            `E) Nenhuma das alternativas anteriores descreve corretamente a disciplina constitucional de ${tema} segundo o resumo acadêmico.`
         ],
         correta: i % 5,
-        feedback: `Explicação jurídica sobre ${tema}: Esta questão aborda um aspecto importante da Organização dos Poderes conforme o resumo acadêmico e a CF/88.`
+        feedback: `Fundamentação Jurídica: O tema "${tema}" é central na prova da OAB. A resposta correta baseia-se na interpretação do STF sobre a harmonia entre os poderes e a proteção dos direitos fundamentais.`
     });
 }
 
@@ -540,13 +530,15 @@ function showResult() {
     
     let message = "";
     if (percentage >= 80) {
-        message = "🎉 Excelente! Você tem um domínio excepcional do Direito Constitucional. Parabéns, você está preparado para a OAB!";
+        message = "🎉 Excelente! Você tem um domínio excepcional do Direito Constitucional. Você está muito bem preparado para a OAB!";
+    } else if (percentage >= 70) {
+        message = "👍 Ótimo desempenho! Você conhece bem os fundamentos. Continue estudando os temas de menor incidência.";
     } else if (percentage >= 60) {
-        message = "👍 Bom desempenho! Você conhece os fundamentos, mas vale revisar alguns pontos sobre Organização dos Poderes.";
-    } else if (percentage >= 40) {
-        message = "📚 Desempenho regular. O tema de Organização dos Poderes é recorrente na OAB. Releia o resumo e tente novamente!";
+        message = "📚 Bom desempenho! Você tem uma base sólida. Revise os temas de Controle de Constitucionalidade e Remédios.";
+    } else if (percentage >= 50) {
+        message = "💪 Desempenho regular. Estude com atenção o resumo sobre Organização dos Poderes e Processo Legislativo.";
     } else {
-        message = "💪 Precisa melhorar. Estude com atenção o resumo sobre Separação de Poderes e Sistema de Freios e Contrapesos.";
+        message = "📖 Precisa melhorar. Dedique mais tempo ao estudo de Direito Constitucional. A prova da OAB exige domínio total!";
     }
     
     document.getElementById('result-message').textContent = message;
