@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulado OAB - 100 Questões</title>
+    <title>Quiz - Carta aos Gálatas</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -23,7 +23,7 @@
 
         .container {
             width: 100%;
-            max-width: 900px;
+            max-width: 800px;
         }
 
         .start-screen {
@@ -36,15 +36,9 @@
         }
 
         .start-screen h1 {
-            color: #b21f1f;
-            font-size: 2.2em;
-            margin-bottom: 20px;
-        }
-
-        .start-screen h2 {
-            color: #1a2a6c;
-            font-size: 1.3em;
-            margin-bottom: 10px;
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 15px;
         }
 
         .start-screen p {
@@ -55,21 +49,21 @@
         }
 
         .start-button {
-            background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            padding: 18px 50px;
-            font-size: 1.1em;
+            padding: 15px 40px;
+            font-size: 1em;
             border-radius: 50px;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 10px 30px rgba(26, 42, 108, 0.4);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
             font-weight: bold;
         }
 
         .start-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(26, 42, 108, 0.6);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
         }
 
         .footer-credit {
@@ -101,7 +95,7 @@
         }
 
         .progress-fill {
-            background: linear-gradient(90deg, #1a2a6c 0%, #b21f1f 100%);
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
             height: 100%;
             border-radius: 10px;
             transition: width 0.3s ease;
@@ -114,13 +108,19 @@
             text-align: right;
         }
 
+        .score-display {
+            color: #667eea;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
         .question-text {
             color: #333;
-            font-size: 1.05em;
+            font-size: 1.1em;
             margin-bottom: 25px;
             line-height: 1.6;
             font-weight: 600;
-            text-align: justify;
         }
 
         .options-container {
@@ -145,7 +145,7 @@
 
         .option:hover:not(.disabled) {
             background: #f1f3f5;
-            border-color: #1a2a6c;
+            border-color: #667eea;
         }
 
         .option.selected {
@@ -179,7 +179,7 @@
             background: white;
             border-radius: 50%;
             font-weight: bold;
-            color: #1a2a6c;
+            color: #667eea;
             flex-shrink: 0;
             border: 1px solid #dee2e6;
             min-width: 32px;
@@ -235,8 +235,8 @@
 
         .btn {
             flex: 1;
-            padding: 15px;
-            font-size: 1em;
+            padding: 12px;
+            font-size: 0.95em;
             border: none;
             border-radius: 12px;
             cursor: pointer;
@@ -245,12 +245,12 @@
         }
 
         .btn-confirm {
-            background: #1a2a6c;
+            background: #667eea;
             color: white;
         }
 
         .btn-confirm:hover:not(:disabled) {
-            background: #0f1a3f;
+            background: #5568d3;
             transform: translateY(-2px);
         }
 
@@ -287,14 +287,14 @@
         }
 
         .result-screen h2 {
-            color: #1a2a6c;
+            color: #667eea;
             font-size: 1.8em;
             margin-bottom: 20px;
         }
 
         .result-score {
             font-size: 3em;
-            color: #b21f1f;
+            color: #764ba2;
             font-weight: bold;
             margin: 20px 0;
         }
@@ -316,19 +316,19 @@
         }
 
         .btn-restart {
-            background: #1a2a6c;
+            background: #667eea;
             color: white;
-            padding: 15px 40px;
+            padding: 12px 30px;
             border-radius: 50px;
             border: none;
             cursor: pointer;
             font-weight: bold;
-            font-size: 1em;
+            font-size: 0.95em;
             transition: all 0.3s ease;
         }
 
         .btn-restart:hover {
-            background: #0f1a3f;
+            background: #5568d3;
             transform: translateY(-2px);
         }
 
@@ -349,19 +349,19 @@
 
 <div class="container">
     <div id="start-screen" class="start-screen">
-        <h1>Simulado OAB</h1>
-        <h2>Direito Constitucional</h2>
-        <p>100 questões inéditas estilo OAB/FGV<br>Baseadas no resumo acadêmico de Organização dos Poderes 2026.<br><strong>Temas de maior incidência em provas anteriores</strong></p>
-        <button class="start-button" onclick="startQuiz()">INICIAR SIMULADO</button>
+        <h1>Quiz - Carta aos Gálatas</h1>
+        <p>61 questões sobre a Epístola de Paulo aos Gálatas<br>Teste seu conhecimento bíblico!</p>
+        <button class="start-button" onclick="startQuiz()">INICIAR QUIZ</button>
         <div class="footer-credit">Criador: Fagner Silva</div>
     </div>
 
     <div id="quiz-screen" class="quiz-screen">
         <div class="quiz-card">
-            <div class="progress-text">Questão <span id="current-q">1</span> de <span id="total-q">100</span></div>
+            <div class="progress-text">Questão <span id="current-q">1</span> de <span id="total-q">61</span></div>
             <div class="progress-bar">
                 <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
             </div>
+            <div class="score-display">Acertos: <span id="score-count">0</span>/61</div>
             
             <div id="question" class="question-text"></div>
             
@@ -378,39 +378,77 @@
 
     <div id="result-screen" class="result-screen">
         <h2>Resultado Final</h2>
-        <div id="result-score" class="result-score">0/100</div>
+        <div id="result-score" class="result-score">0/61</div>
         <div id="result-percentage" class="result-percentage">0%</div>
         <div id="result-message" class="result-message"></div>
-        <button class="btn-restart" onclick="restartQuiz()">Reiniciar Simulado</button>
+        <button class="btn-restart" onclick="restartQuiz()">Reiniciar Quiz</button>
         <div class="footer-credit">Criador: Fagner Silva</div>
     </div>
 </div>
 
 <script>
 const questions = [
-    { pergunta: "O Governador do Estado 'Alpha' edita o Decreto nº 123, que dispõe sobre a obrigatoriedade de exibição de filmes nacionais em salas de cinema locais, sob pena de multa. A Associação Nacional de Exibidores Cinematográficos (ANEC) entende que a norma invade competência legislativa da União. Diante do sistema de repartição de competências e do controle de constitucionalidade, assinale a afirmativa correta:", opcoes: ["O Decreto é constitucional, pois os Estados possuem competência concorrente para legislar sobre cultura e proteção do patrimônio histórico.", "A norma é inconstitucional, pois a competência para legislar sobre cinema e propaganda comercial é privativa da União, conforme o Art. 22 da CF/88.", "O controle de constitucionalidade de decreto estadual em face da Constituição Federal deve ser feito obrigatoriamente via ADI perante o Tribunal de Justiça local.", "A ANEC não possui legitimidade ativa para propor ADI perante o STF, por não ser entidade de classe de âmbito nacional.", "O Decreto é válido, mas sua eficácia depende de ratificação pelo Congresso Nacional por tratar de tema de interesse nacional."], correta: 1, feedback: "A competência para legislar sobre propaganda comercial e diretrizes da cultura nacional (incluindo cinema) é privativa da União (Art. 22, XXIX). Além disso, decretos autônomos que invadem competência legislativa são passíveis de controle." },
-    { pergunta: "Maria, Deputada Federal, profere discurso inflamado na tribuna da Câmara, acusando um Ministro do STF de receber propina para soltar traficantes. Fora do Congresso, em entrevista a um jornal, Maria reafirma as acusações, utilizando termos ainda mais ofensivos. O Ministro decide processá-la por calúnia e injúria. Sobre a imunidade parlamentar de Maria, assinale a opção correta:", opcoes: ["Maria possui imunidade absoluta por suas palavras e opiniões, tanto dentro quanto fora do Congresso, independentemente do nexo com o mandato.", "A imunidade material protege Maria apenas pelo discurso na tribuna, mas não pelas declarações dadas à imprensa fora do recinto parlamentar.", "A imunidade material alcança as declarações fora do Congresso, desde que guardem nexo causal com o exercício do mandato parlamentar.", "O processo criminal contra Maria depende de prévia autorização da Câmara dos Deputados para ser iniciado pelo STF.", "Maria só poderia ser processada se a própria Câmara dos Deputados decidisse cassar seu mandato por quebra de decoro parlamentar."], correta: 2, feedback: "Segundo o STF, a imunidade material (Art. 53) protege o parlamentar por opiniões e palavras. Se proferidas fora do Congresso, exige-se o nexo com o mandato. No caso, críticas a membros de outros poderes no exercício da fiscalização política possuem esse nexo." },
-    { pergunta: "O Presidente da República edita Medida Provisória que altera o Código de Processo Civil para reduzir prazos recursais da Fazenda Pública. O Conselho Federal da OAB ingressa com ADI. Sobre a admissibilidade e o mérito da questão, assinale a afirmativa correta:", opcoes: ["A Medida Provisória é constitucional, pois o Presidente possui competência para legislar sobre processo civil em casos de urgência.", "A MP é inconstitucional, pois a CF/88 veda expressamente a edição de Medida Provisória sobre matéria relativa a direito processual civil.", "O Conselho Federal da OAB não possui legitimidade para propor ADI, sendo esta restrita ao Procurador-Geral da República.", "A MP é válida, mas sua vigência é limitada a 30 dias, sem possibilidade de prorrogação pelo Congresso Nacional.", "O STF não pode suspender a eficácia de Medida Provisória via medida cautelar em ADI."], correta: 1, feedback: "O Art. 62, §1º, I, 'b' da CF/88 veda expressamente a edição de medidas provisórias sobre direito penal, processual penal e direito processual civil." }
+    { pergunta: "Quem escreveu a Carta aos Gálatas?", opcoes: ["O apóstolo Paulo.", "O apóstolo Pedro.", "O apóstolo João.", "O apóstolo Tiago."], correta: 0, feedback: "Resposta correta: O apóstolo Paulo." },
+    { pergunta: "A quem Paulo dirige essa carta?", opcoes: ["Às igrejas da Galácia.", "À igreja de Corinto.", "À igreja de Éfeso.", "À igreja de Roma."], correta: 0, feedback: "Resposta correta: Às igrejas da Galácia." },
+    { pergunta: "De onde Paulo afirma ter recebido seu apostolado?", opcoes: ["Não de homens, mas de Jesus Cristo e de Deus Pai.", "Dos apóstolos em Jerusalém.", "Da comunidade de Antioquia.", "Do Sinédrio judeu."], correta: 0, feedback: "Resposta correta: Não de homens, mas de Jesus Cristo e de Deus Pai." },
+    { pergunta: "Qual é o tema central logo no início da carta?", opcoes: ["A defesa do verdadeiro evangelho.", "A importância da circuncisão.", "A vida comunitária dos cristãos.", "A ressurreição de Cristo."], correta: 0, feedback: "Resposta correta: A defesa do verdadeiro evangelho." },
+    { pergunta: "O que estava acontecendo com os gálatas?", opcoes: ["Eles estavam se afastando do verdadeiro evangelho.", "Eles eram muito fiéis à fé cristã.", "Eles praticavam bem a caridade.", "Eles seguiam corretamente a lei de Moisés."], correta: 0, feedback: "Resposta correta: Eles estavam se afastando do verdadeiro evangelho." },
+    { pergunta: "Como Paulo reage à mudança dos gálatas para outro evangelho?", opcoes: ["Com espanto e repreensão.", "Com compreensão e paciência.", "Com indiferença.", "Com alegria e aprovação."], correta: 0, feedback: "Resposta correta: Com espanto e repreensão." },
+    { pergunta: "Existe outro evangelho além do anunciado por Paulo?", opcoes: ["Não, qualquer outro é falso.", "Sim, existem vários evangelhos válidos.", "Talvez, depende da interpretação.", "Sim, o evangelho de Pedro é diferente."], correta: 0, feedback: "Resposta correta: Não, qualquer outro é falso." },
+    { pergunta: "O que Paulo diz sobre quem prega um evangelho diferente?", opcoes: ["Que seja anátema (amaldiçoado).", "Que seja respeitado e ouvido.", "Que seja instruído com paciência.", "Que seja ignorado pela comunidade."], correta: 0, feedback: "Resposta correta: Que seja anátema (amaldiçoado)." },
+    { pergunta: "Paulo buscava agradar a quem?", opcoes: ["A Deus, não aos homens.", "Aos líderes da comunidade.", "À maioria das pessoas.", "Aos seus inimigos."], correta: 0, feedback: "Resposta correta: A Deus, não aos homens." },
+    { pergunta: "Como Paulo recebeu o evangelho que pregava?", opcoes: ["Por revelação direta de Jesus Cristo.", "Dos apóstolos em Jerusalém.", "De um livro sagrado.", "Da tradição oral dos judeus."], correta: 0, feedback: "Resposta correta: Por revelação direta de Jesus Cristo." },
+    { pergunta: "Quem acompanhou Paulo a Jerusalém?", opcoes: ["Barnabé e Tito.", "Pedro e João.", "Silas e Timóteo.", "Priscila e Áquila."], correta: 0, feedback: "Resposta correta: Barnabé e Tito." },
+    { pergunta: "Por que Paulo foi a Jerusalém?", opcoes: ["Para expor o evangelho que pregava entre os gentios.", "Para receber a circuncisão.", "Para participar de uma festa judaica.", "Para fugir da perseguição."], correta: 0, feedback: "Resposta correta: Para expor o evangelho que pregava entre os gentios." },
+    { pergunta: "Tito foi obrigado a circuncidar-se?", opcoes: ["Não.", "Sim, por ordem dos apóstolos.", "Sim, por exigência da lei.", "Talvez, não está claro."], correta: 0, feedback: "Resposta correta: Não." },
+    { pergunta: "Quem Paulo confrontou em Antioquia?", opcoes: ["O apóstolo Pedro.", "O apóstolo João.", "O apóstolo Tiago.", "O apóstolo Filipe."], correta: 0, feedback: "Resposta correta: O apóstolo Pedro." },
+    { pergunta: "Por que Paulo repreendeu Pedro?", opcoes: ["Porque ele se afastava dos gentios por medo dos judeus.", "Porque Pedro negava a fé em Cristo.", "Porque Pedro roubava dinheiro da comunidade.", "Porque Pedro não acreditava na ressurreição."], correta: 0, feedback: "Resposta correta: Porque ele se afastava dos gentios por medo dos judeus." },
+    { pergunta: "O que Paulo ensina sobre a justificação?", opcoes: ["Que o homem é justificado pela fé em Cristo, não pelas obras da lei.", "Que a justificação vem pela observância da lei.", "Que a justificação é impossível.", "Que a justificação vem pelas boas obras."], correta: 0, feedback: "Resposta correta: Que o homem é justificado pela fé em Cristo, não pelas obras da lei." },
+    { pergunta: "O que significa 'já não sou eu quem vive, mas Cristo vive em mim'?", opcoes: ["A nova vida em Cristo, vivida pela fé.", "A morte física do cristão.", "A reencarnação de Cristo.", "A negação da identidade pessoal."], correta: 0, feedback: "Resposta correta: A nova vida em Cristo, vivida pela fé." },
+    { pergunta: "A morte de Cristo foi em vão?", opcoes: ["Não; se a justiça viesse pela lei, então seria em vão.", "Sim, porque a lei é suficiente.", "Talvez, depende da interpretação.", "Sim, Cristo morreu sem propósito."], correta: 0, feedback: "Resposta correta: Não; se a justiça viesse pela lei, então seria em vão." },
+    { pergunta: "Como Paulo vive agora?", opcoes: ["Pela fé no Filho de Deus.", "Pela observância da lei.", "Pela sabedoria humana.", "Pela riqueza material."], correta: 0, feedback: "Resposta correta: Pela fé no Filho de Deus." },
+    { pergunta: "Como Paulo chama os gálatas no início do capítulo 3?", opcoes: ["Insensatos.", "Sábios.", "Fiéis.", "Escolhidos."], correta: 0, feedback: "Resposta correta: Insensatos." },
+    { pergunta: "Como os gálatas receberam o Espírito?", opcoes: ["Pela fé, não pelas obras da lei.", "Pelas obras da lei.", "Pela circuncisão.", "Pelos sacrifícios."], correta: 0, feedback: "Resposta correta: Pela fé, não pelas obras da lei." },
+    { pergunta: "Abraão foi justificado de que maneira?", opcoes: ["Pela fé.", "Pelas obras da lei.", "Pela circuncisão.", "Pelos sacrifícios."], correta: 0, feedback: "Resposta correta: Pela fé." },
+    { pergunta: "Quem são filhos de Abraão?", opcoes: ["Os que têm fé.", "Os que são judeus.", "Os que guardam a lei.", "Os que são circuncidados."], correta: 0, feedback: "Resposta correta: Os que têm fé." },
+    { pergunta: "O que a Escritura previa sobre os gentios?", opcoes: ["Que Deus os justificaria pela fé.", "Que os gentios seriam escravizados.", "Que os gentios nunca seriam salvos.", "Que os gentios deveriam guardar a lei."], correta: 0, feedback: "Resposta correta: Que Deus os justificaria pela fé." },
+    { pergunta: "O que a lei não pode fazer?", opcoes: ["Dar vida e justificar.", "Condenar os pecadores.", "Revelar o pecado.", "Apontar para Cristo."], correta: 0, feedback: "Resposta correta: Dar vida e justificar." },
+    { pergunta: "Para que serviu a lei?", opcoes: ["Para mostrar o pecado até a vinda de Cristo.", "Para salvar os homens.", "Para justificar os gentios.", "Para abolir a fé."], correta: 0, feedback: "Resposta correta: Para mostrar o pecado até a vinda de Cristo." },
+    { pergunta: "O que Cristo fez ao morrer na cruz?", opcoes: ["Nos resgatou da maldição da lei.", "Nos condenou à morte.", "Nos escravizou à lei.", "Nos afastou de Deus."], correta: 0, feedback: "Resposta correta: Nos resgatou da maldição da lei." },
+    { pergunta: "O que acontece com quem está em Cristo?", opcoes: ["Torna-se filho de Deus pela fé.", "Torna-se escravo da lei.", "Torna-se inimigo de Deus.", "Torna-se condenado eternamente."], correta: 0, feedback: "Resposta correta: Torna-se filho de Deus pela fé." },
+    { pergunta: "Em Cristo há diferença entre judeu e gentio?", opcoes: ["Não, todos são um em Cristo Jesus.", "Sim, os judeus são superiores.", "Sim, os gentios são inferiores.", "Talvez, depende da interpretação."], correta: 0, feedback: "Resposta correta: Não, todos são um em Cristo Jesus." },
+    { pergunta: "Com o que Paulo compara o herdeiro quando ainda é criança?", opcoes: ["A um escravo, embora seja dono de tudo.", "A um príncipe.", "A um sábio.", "A um guerreiro."], correta: 0, feedback: "Resposta correta: A um escravo, embora seja dono de tudo." },
+    { pergunta: "Até quando o herdeiro fica sujeito a tutores e curadores?", opcoes: ["Até o tempo determinado pelo pai.", "Para sempre.", "Até a morte do pai.", "Nunca, é livre desde o nascimento."], correta: 0, feedback: "Resposta correta: Até o tempo determinado pelo pai." },
+    { pergunta: "O que Deus fez quando chegou a plenitude do tempo?", opcoes: ["Enviou seu Filho, nascido de mulher e nascido sob a lei.", "Destruiu o mundo.", "Abandonou a humanidade.", "Criou uma nova lei."], correta: 0, feedback: "Resposta correta: Enviou seu Filho, nascido de mulher e nascido sob a lei." },
+    { pergunta: "Para que Cristo veio segundo Paulo?", opcoes: ["Para resgatar os que estavam debaixo da lei e para que recebêssemos a adoção de filhos.", "Para condenar os pecadores.", "Para escravizar os gentios.", "Para abolir a fé."], correta: 0, feedback: "Resposta correta: Para resgatar os que estavam debaixo da lei e para que recebêssemos a adoção de filhos." },
+    { pergunta: "Qual é o sinal de que somos filhos de Deus?", opcoes: ["Deus enviou o Espírito de seu Filho ao nosso coração que clama: 'Aba, Pai'.", "A circuncisão.", "A observância da lei.", "A riqueza material."], correta: 0, feedback: "Resposta correta: Deus enviou o Espírito de seu Filho ao nosso coração que clama: 'Aba, Pai'." },
+    { pergunta: "Depois de conhecerem a Deus, por que Paulo se admira dos gálatas?", opcoes: ["Porque estavam voltando aos fracos e pobres rudimentos.", "Porque eram muito fiéis.", "Porque praticavam a caridade.", "Porque seguiam corretamente a lei."], correta: 0, feedback: "Resposta correta: Porque estavam voltando aos fracos e pobres rudimentos." },
+    { pergunta: "Quais práticas os gálatas estavam observando que preocupavam Paulo?", opcoes: ["Dias, meses, tempos e anos.", "Oração e jejum.", "Caridade e amor.", "Fé e esperança."], correta: 0, feedback: "Resposta correta: Dias, meses, tempos e anos." },
+    { pergunta: "Como os gálatas haviam recebido Paulo quando ele lhes pregou pela primeira vez?", opcoes: ["Como um anjo de Deus, como o próprio Cristo.", "Com desprezo e rejeição.", "Com indiferença.", "Com hostilidade e violência."], correta: 0, feedback: "Resposta correta: Como um anjo de Deus, como o próprio Cristo." },
+    { pergunta: "Qual alegoria Paulo usa com as histórias de Abraão?", opcoes: ["A alegoria de Agar e Sara.", "A alegoria de Adão e Eva.", "A alegoria de Caim e Abel.", "A alegoria de Noé e a arca."], correta: 0, feedback: "Resposta correta: A alegoria de Agar e Sara." },
+    { pergunta: "O que representam as duas mulheres na alegoria?", opcoes: ["Dois pactos: um da escravidão (Agar) e outro da liberdade (Sara).", "Duas cidades.", "Dois reinos.", "Duas religiões diferentes."], correta: 0, feedback: "Resposta correta: Dois pactos: um da escravidão (Agar) e outro da liberdade (Sara)." },
+    { pergunta: "Para que Cristo nos libertou?", opcoes: ["Para que permaneçamos livres.", "Para nos escravizar.", "Para nos condenar.", "Para nos abandonar."], correta: 0, feedback: "Resposta correta: Para que permaneçamos livres." },
+    { pergunta: "O que aconteceria se os gálatas aceitassem a circuncisão como obrigação?", opcoes: ["Cristo de nada lhes aproveitaria.", "Cristo os abençoaria.", "Cristo os salvaria.", "Cristo os recompensaria."], correta: 0, feedback: "Resposta correta: Cristo de nada lhes aproveitaria." },
+    { pergunta: "O que vale em Cristo Jesus segundo Paulo?", opcoes: ["A fé que atua pelo amor.", "A circuncisão.", "A observância da lei.", "A riqueza material."], correta: 0, feedback: "Resposta correta: A fé que atua pelo amor." },
+    { pergunta: "Que pequena coisa Paulo usa como exemplo de algo que influencia tudo?", opcoes: ["Um pouco de fermento leveda toda a massa.", "Uma pequena semente.", "Uma gota de água.", "Um grão de areia."], correta: 0, feedback: "Resposta correta: Um pouco de fermento leveda toda a massa." },
+    { pergunta: "Para que os irmãos foram chamados?", opcoes: ["Para a liberdade.", "Para a escravidão.", "Para a condenação.", "Para a morte."], correta: 0, feedback: "Resposta correta: Para a liberdade." },
+    { pergunta: "Como deve ser usada a liberdade cristã?", opcoes: ["Para servir uns aos outros pelo amor.", "Para fazer o que se quer.", "Para se exaltar sobre os outros.", "Para acumular riquezas."], correta: 0, feedback: "Resposta correta: Para servir uns aos outros pelo amor." },
+    { pergunta: "Em que se resume toda a lei?", opcoes: ["Amarás o teu próximo como a ti mesmo.", "Guardarás o sábado.", "Farás sacrifícios.", "Observarás a circuncisão."], correta: 0, feedback: "Resposta correta: Amarás o teu próximo como a ti mesmo." },
+    { pergunta: "Qual é o conflito descrito por Paulo no cristão?", opcoes: ["A carne luta contra o Espírito.", "A mente luta contra o coração.", "A vontade luta contra a razão.", "O corpo luta contra a alma."], correta: 0, feedback: "Resposta correta: A carne luta contra o Espírito." },
+    { pergunta: "Cite algumas obras da carne mencionadas por Paulo.", opcoes: ["Prostituição, impureza, idolatria, inveja, ira, discórdias, entre outras.", "Oração, jejum, caridade, fé, esperança.", "Sabedoria, conhecimento, compreensão.", "Beleza, força, inteligência."], correta: 0, feedback: "Resposta correta: Prostituição, impureza, idolatria, inveja, ira, discórdias, entre outras." },
+    { pergunta: "Qual é o fruto do Espírito?", opcoes: ["Amor, alegria, paz, paciência, benignidade, bondade, fidelidade, mansidão e domínio próprio.", "Ódio, tristeza, conflito, impaciência.", "Maldade, impureza, inveja.", "Violência, ira, discórdia."], correta: 0, feedback: "Resposta correta: Amor, alegria, paz, paciência, benignidade, bondade, fidelidade, mansidão e domínio próprio." },
+    { pergunta: "O que deve fazer alguém que vê um irmão em falta?", opcoes: ["Restaurá-lo com espírito de mansidão.", "Denunciá-lo à comunidade.", "Expulsá-lo da comunidade.", "Ignorá-lo e afastar-se."], correta: 0, feedback: "Resposta correta: Restaurá-lo com espírito de mansidão." },
+    { pergunta: "O que os cristãos devem fazer uns pelos outros?", opcoes: ["Levar as cargas uns dos outros.", "Julgar uns aos outros.", "Competir uns com os outros.", "Ignorar uns aos outros."], correta: 0, feedback: "Resposta correta: Levar as cargas uns dos outros." },
+    { pergunta: "Quem pensa ser alguma coisa sem ser, o que faz?", opcoes: ["Engana a si mesmo.", "Engana aos outros.", "Engana a Deus.", "Engana a comunidade."], correta: 0, feedback: "Resposta correta: Engana a si mesmo." },
+    { pergunta: "Cada um deve examinar o quê?", opcoes: ["As suas próprias obras.", "As obras dos outros.", "As leis da comunidade.", "As tradições antigas."], correta: 0, feedback: "Resposta correta: As suas próprias obras." },
+    { pergunta: "O que cada pessoa levará?", opcoes: ["O seu próprio fardo.", "O fardo dos outros.", "Nenhum fardo.", "O fardo de toda a comunidade."], correta: 0, feedback: "Resposta correta: O seu próprio fardo." },
+    { pergunta: "O que deve fazer aquele que recebe ensino da palavra?", opcoes: ["Repartir todos os bens com quem o instrui.", "Guardar todos os bens para si.", "Rejeitar o ensino.", "Ignorar quem o instrui."], correta: 0, feedback: "Resposta correta: Repartir todos os bens com quem o instrui." },
+    { pergunta: "Qual princípio Paulo ensina sobre semear e colher?", opcoes: ["Tudo o que o homem semear, isso também colherá.", "Nem sempre colhemos o que semeamos.", "Colhemos sempre mais do que semeamos.", "Colhemos sempre menos do que semeamos."], correta: 0, feedback: "Resposta correta: Tudo o que o homem semear, isso também colherá." },
+    { pergunta: "Quem semeia para a carne colherá o quê?", opcoes: ["Corrupção.", "Vida eterna.", "Alegria.", "Paz."], correta: 0, feedback: "Resposta correta: Corrupção." },
+    { pergunta: "Quem semeia para o Espírito colherá o quê?", opcoes: ["Vida eterna.", "Corrupção.", "Morte.", "Condenação."], correta: 0, feedback: "Resposta correta: Vida eterna." },
+    { pergunta: "Em que Paulo diz que se gloria?", opcoes: ["Somente na cruz de Cristo.", "Na sua sabedoria.", "Na sua força.", "Na sua riqueza."], correta: 0, feedback: "Resposta correta: Somente na cruz de Cristo." },
+    { pergunta: "Com que atitude deve ser restaurado alguém que caiu em alguma falta?", opcoes: ["Com espírito de mansidão.", "Com severidade e julgamento.", "Com desprezo e rejeição.", "Com indiferença."], correta: 0, feedback: "Resposta correta: Com espírito de mansidão." }
 ];
-
-// Adicionando as 97 questões restantes (4-100)
-for (let i = 4; i <= 100; i++) {
-    const temas = ["Controle de Constitucionalidade", "Direitos e Garantias Fundamentais", "Organização dos Poderes", "Processo Legislativo", "Organização do Estado", "Remédios Constitucionais"];
-    const tema = temas[(i - 1) % temas.length];
-    
-    questions.push({
-        pergunta: `Questão ${i}: Considere um caso hipotético envolvendo o tema "${tema}". De acordo com a jurisprudência consolidada do Supremo Tribunal Federal (STF) e as normas da Constituição Federal de 1988, assinale a alternativa que apresenta a solução jurídica correta para o conflito narrado.`,
-        opcoes: [
-            `A) No âmbito de ${tema}, prevalece o princípio da simetria constitucional, obrigando os Estados a reproduzirem o modelo federal.`,
-            `B) A competência para legislar sobre ${tema} é concorrente entre União, Estados e Distrito Federal, cabendo à União as normas gerais.`,
-            `C) O controle judicial sobre atos relativos a ${tema} é limitado, respeitando-se a discricionariedade administrativa e política.`,
-            `D) Conforme o sistema de freios e contrapesos, ${tema} exige a participação direta dos três poderes para sua validade plena.`,
-            `E) Nenhuma das alternativas anteriores descreve corretamente a disciplina constitucional de ${tema} segundo o resumo acadêmico.`
-        ],
-        correta: i % 5,
-        feedback: `Fundamentação Jurídica: O tema "${tema}" é central na prova da OAB. A resposta correta baseia-se na interpretação do STF sobre a harmonia entre os poderes e a proteção dos direitos fundamentais.`
-    });
-}
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -434,6 +472,7 @@ function showQuestion() {
     const q = questions[currentQuestionIndex];
     document.getElementById('current-q').textContent = currentQuestionIndex + 1;
     document.getElementById('total-q').textContent = questions.length;
+    document.getElementById('score-count').textContent = score;
     document.getElementById('progress-fill').style.width = ((currentQuestionIndex + 1) / questions.length * 100) + '%';
     
     document.getElementById('question').textContent = q.pergunta;
@@ -530,15 +569,15 @@ function showResult() {
     
     let message = "";
     if (percentage >= 80) {
-        message = "🎉 Excelente! Você tem um domínio excepcional do Direito Constitucional. Você está muito bem preparado para a OAB!";
+        message = "🎉 Excelente! Você domina muito bem a Carta aos Gálatas!";
     } else if (percentage >= 70) {
-        message = "👍 Ótimo desempenho! Você conhece bem os fundamentos. Continue estudando os temas de menor incidência.";
+        message = "👍 Ótimo desempenho! Você conhece bem o conteúdo.";
     } else if (percentage >= 60) {
-        message = "📚 Bom desempenho! Você tem uma base sólida. Revise os temas de Controle de Constitucionalidade e Remédios.";
+        message = "📚 Bom desempenho! Continue estudando para melhorar.";
     } else if (percentage >= 50) {
-        message = "💪 Desempenho regular. Estude com atenção o resumo sobre Organização dos Poderes e Processo Legislativo.";
+        message = "💪 Desempenho regular. Revise o conteúdo e tente novamente.";
     } else {
-        message = "📖 Precisa melhorar. Dedique mais tempo ao estudo de Direito Constitucional. A prova da OAB exige domínio total!";
+        message = "📖 Precisa melhorar. Estude mais sobre a Carta aos Gálatas!";
     }
     
     document.getElementById('result-message').textContent = message;
